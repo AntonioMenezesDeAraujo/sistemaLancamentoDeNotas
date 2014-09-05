@@ -12,7 +12,7 @@ public class Teste {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("sistemaLancamentoDeNotas");
 		EntityManager em = factory.createEntityManager();
 		Aluno p = new Aluno();
-		p.setMatricula("004");
+		p.setMatricula("005");
 		p.setNome("Antonio Menezes de Araújo");
 		Disciplina d = new Disciplina();
 		d.setCodigo("004");
