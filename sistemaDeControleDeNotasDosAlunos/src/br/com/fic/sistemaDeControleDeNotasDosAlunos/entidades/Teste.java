@@ -1,8 +1,6 @@
 package br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades;
 
 //TestaInsereProduto.java
-import java.util.Collection;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -13,7 +11,7 @@ public class Teste {
 		EntityManager em = factory.createEntityManager();
 		Aluno p = new Aluno();
 		p.setMatricula("005");
-		p.setNome("Antonio Menezes de AraÃºjo");
+		p.setNome("Antonio Menezes de Araújo");
 		Disciplina d = new Disciplina();
 		d.setCodigo("004");
 		d.setDescricao("Banco de Dados");
@@ -22,4 +20,6 @@ public class Teste {
 		em.persist(d);
 		em.getTransaction().commit();
 	}
+	
+	
 }
