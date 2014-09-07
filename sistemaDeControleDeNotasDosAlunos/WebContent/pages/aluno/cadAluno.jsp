@@ -8,11 +8,14 @@
 
 <body>
 	<div class="geral">
-		<fieldset>
-			<legend>Cadastrar aluno:</legend>
+	   <jsp:include page="../layout/cabecalho.html" />
+     	<form action="" aling="center">
 			<label>Nome:</label>
-		
-		</fieldset>
+			<input type="text" size="20" name="nome" /><br></br>
+			<label>Matrícula</label>
+			<input type="text" size="20" name="mat" /> <br></br>
+			<input  type="Submit" value="Cadastro"></input>
+		</form>
 	</div>
 </body>
 </html>
