@@ -8,7 +8,7 @@ import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Disciplina;
 public interface AlunoDao {
 /*teste de commit*/ /*Mais um commit*/
 	void salvarAluno(Aluno aluno, Disciplina disciplina);
-
+/*teste*/
 	void alterarDadosDoAluno(Aluno aluno);
 
 	List<Aluno> retornarTodosOsAluno();
