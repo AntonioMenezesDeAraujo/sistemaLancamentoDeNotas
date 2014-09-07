@@ -9,12 +9,14 @@
 <body>
 	<div class="geral">
 	   <jsp:include page="../layout/cabecalho.html" />
-     	<form action="" aling="center">
+     	<form action="/SalvarAlunoServlet" method="post">
 			<label>Nome:</label>
 			<input type="text" size="20" name="nome" /><br></br>
 			<label>Matrícula</label>
 			<input type="text" size="20" name="mat" /> <br></br>
-			<input  type="Submit" value="Cadastro"></input>
+			<input  type="submit" value="Cadastro"></input>
+			<input  type="reset" value="Limpar"></input>
+			<a href="index.htm"><input  type="submit" value="Cancelar"></input></a>
 		</form>
 	</div>
 </body>
