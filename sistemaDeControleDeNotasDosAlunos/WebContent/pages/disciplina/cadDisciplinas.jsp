@@ -8,7 +8,7 @@
 
 <body>
 	<div class="geral">
-	<jsp:include page="cabecalho.html" />
+	<jsp:include page="../layout/cabecalho.html" />
 	</div>
 </body>
 </html>
