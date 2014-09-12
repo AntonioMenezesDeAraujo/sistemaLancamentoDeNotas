@@ -9,7 +9,7 @@ public interface DisciplinaDao {
 
 	void salvarDisciplina(Disciplina disciplina);
 
-	List<Disciplina> retornaTodasDisciplinas();
+	List<Disciplina> getTodasDisciplinas();
 
 	List<Disciplina> pesquisaDisciplinaPeloCodigo(String codigo);
 

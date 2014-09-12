@@ -31,7 +31,7 @@ public class DisciplinaDaoImpl extends ConexaoBancoDeDados implements
 	}
 
 	@Override
-	public List<Disciplina> retornaTodasDisciplinas() {
+	public List<Disciplina> getTodasDisciplinas() {
 		disciplinas.clear();
 		Query query = entity
 				.createQuery("select disciplina from Disciplina disciplina");
@@ -77,7 +77,7 @@ public class DisciplinaDaoImpl extends ConexaoBancoDeDados implements
 	@Override
 	public void excluirDisciplina(String nomeOuCodigo) {
 		disciplinas.clear();
-		disciplinas = retornaTodasDisciplinas();
+		disciplinas = getTodasDisciplinas();
 		for (Disciplina disciplina : disciplinas) {
 			if (disciplina.getCodigo().equals(nomeOuCodigo)	|| disciplina.getDescricao().equalsIgnoreCase(nomeOuCodigo)) {
 				excluirAlunosEmCascata(disciplina);
