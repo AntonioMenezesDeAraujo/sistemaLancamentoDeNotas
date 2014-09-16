@@ -22,6 +22,12 @@ import br.com.fic.sistemaDeControleDeNotasDosAlunos.servico.Servico;
 @WebServlet("/SalvarAlunoServlet")
 public class SalvarAlunoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	String caminho = "sistemaDeControleDeNotasDosAlunos/pages";
+	@Override
+	public void init() throws ServletException {
+
+		
+	}
   
     public SalvarAlunoServlet() {
         super();

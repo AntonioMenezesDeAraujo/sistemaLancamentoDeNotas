@@ -35,7 +35,7 @@ public class SevicoCadastroAluno implements Servico {
 		}
 		AlunoDao dao = new AlunoDaoImpl();
 		dao.salvarAluno(aluno, disc);
-		return "../aluno/cadAluno.jsp";
+		return "/pages/aluno/cadAluno.jsp";
 
 			
 

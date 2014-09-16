@@ -10,17 +10,15 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cadastro de alunos</title>
-<link rel="stylesheet" type="text/css" href="../css/estilo.css" />
-<script language="javascript" src="../../js/styleCombobox.js"></script>
-
+<link rel="stylesheet" type="text/css" href="pages/estilo.css" />
 
 </head>
-		
+
 <body>
 <jsp:useBean id="dao" class="br.com.fic.sistemaDeControleDeNotasDosAlunos.daoImpl.DisciplinaDaoImpl"/>
 	
 	<div id="id" class="geral">
-		<jsp:include page="../layout/cabecalho.html" />
+		<jsp:include page="cabecalho.html" />
 		<form action="../../salvarAluno?parametro=SevicoCadastroAluno" name="formulario" method="post">
 
 			<label>Disciplina:</label>
