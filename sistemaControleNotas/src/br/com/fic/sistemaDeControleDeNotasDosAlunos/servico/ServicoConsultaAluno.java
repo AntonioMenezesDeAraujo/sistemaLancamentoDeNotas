@@ -16,8 +16,7 @@ public class ServicoConsultaAluno implements Servico {
 		
 		AlunoDao dao = new AlunoDaoImpl();
 		req.setAttribute( "lista", dao.pesquisarAlunoPorNome(criterio));  
-//		req.getRequestDispatcher("/pages/aluno/conAluno.jsp").forward( req, res); 
-//		res.setContentType ("text/html;charset=utf-8");
+
 		return "conAluno.jsp";
 	}
 
