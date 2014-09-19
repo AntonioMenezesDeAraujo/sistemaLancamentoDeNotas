@@ -10,21 +10,11 @@
 		<h1>Oi deu certo</h1>
 	
 <body>
-<jsp:useBean id="dao" class="br.com.fic.sistemaDeControleDeNotasDosAlunos.daoImpl.DisciplinaDaoImpl"/>
 	
 	<div id="id" class="geral">
 		<jsp:include page="cabecalho.html" />
-		<form action="AlunoServlet?parametro=SevicoCadastroAluno" name="formulario" method="post">
-
-			<label>Disciplina:</label>
-			<select size="1" name="disciplina" class="styleCombobox">
-				<option selected value="Selecione">Selecione uma diciplina</option>
-					<c:forEach var="disciplina" items="${dao.todasDisciplinas}">
-						<option> ${disciplina.descricao}</option>
-					</c:forEach>
-			</select> 
-			<br></br>
-			
+		<form action="AlunoServlet?parametro=ServicoCadastroAluno" name="formulario" method="post">
+		
 			<label>Nome:</label> <input type="text" size="20" name="nome" /><br></br>
 			<label>Matrícula</label> <input type="text" size="20" name="mat" />
 			

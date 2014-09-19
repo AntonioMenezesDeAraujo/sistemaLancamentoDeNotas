@@ -3,12 +3,11 @@ package br.com.fic.sistemaDeControleDeNotasDosAlunos.dao;
 import java.util.List;
 
 import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Aluno;
-import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Disciplina;
 
 public interface AlunoDao {
-/*teste de commit*/ /*Mais um commit*/
-	void salvarAluno(Aluno aluno, Disciplina disciplina);
-/*teste*/
+
+	void salvarAluno(Aluno aluno);
+
 	void alterarDadosDoAluno(Aluno aluno);
 
 	List<Aluno> retornarTodosOsAluno();
@@ -17,7 +16,7 @@ public interface AlunoDao {
 
 	List<Aluno> pesquisarAlunoPorMaricula(String matricula);
 
-	void excluirAluno(String matriculaOuNome, Disciplina disciplina);
+	void excluirAluno(String matriculaOuNome);
 	
-	List<Double> pesquisarTodasNotasDoAlunoNaDisciplina(Aluno aluno, Disciplina disciplina);
+	List<Double> pesquisarTodasNotasDoAluno(Aluno aluno);
 }

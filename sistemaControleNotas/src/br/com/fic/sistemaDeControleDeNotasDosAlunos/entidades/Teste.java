@@ -12,14 +12,8 @@ public class Teste {
 		Aluno p = new Aluno();
 		p.setMatricula("005");
 		p.setNome("Antonio Menezes de Araújo");
-		Disciplina d = new Disciplina();
-		d.setCodigo("004");
-		d.setDescricao("Banco de Dados");
 //		p.getAlunosDisciplina().
 		em.getTransaction().begin();
-		em.persist(d);
 		em.getTransaction().commit();
-	}
-	
-	
+	}	
 }

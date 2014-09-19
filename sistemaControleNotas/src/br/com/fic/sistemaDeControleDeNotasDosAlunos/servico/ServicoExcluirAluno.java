@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.fic.sistemaDeControleDeNotasDosAlunos.dao.AlunoDao;
 import br.com.fic.sistemaDeControleDeNotasDosAlunos.daoImpl.AlunoDaoImpl;
-import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Aluno;
 
 public class ServicoExcluirAluno implements Servico{
 
@@ -16,8 +15,7 @@ public class ServicoExcluirAluno implements Servico{
 		String matricula = req.getParameter("mat");
 		
 		AlunoDao dao = new AlunoDaoImpl();
-		Aluno aluno =  dao.pesquisarAlunoPorMaricula(matricula).get(0);
-		dao.excluirAluno(matricula, aluno.getAlunosDisciplina().get(0).getDisciplina());
+		dao.excluirAluno(matricula);
 
 		return "excAluno.jsp";
 	}

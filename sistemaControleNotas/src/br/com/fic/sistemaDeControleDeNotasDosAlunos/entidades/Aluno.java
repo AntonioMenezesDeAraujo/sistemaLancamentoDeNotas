@@ -23,8 +23,6 @@ public class Aluno {
 	private String nome;
 	@OneToMany(mappedBy = "aluno")
 	private List<Nota> notas;
-	@OneToMany(mappedBy = "aluno")
-	private List<AlunoDisciplina> alunosDisciplina;
 	
 	public String getMatricula() {
 		return matricula;
@@ -48,13 +46,5 @@ public class Aluno {
 
 	public void setNotas(List<Nota> notas) {
 		this.notas = notas;
-	}
-
-	public List<AlunoDisciplina> getAlunosDisciplina() {
-		return alunosDisciplina;
-	}
-
-	public void setAlunosDisciplina(List<AlunoDisciplina> alunosDisciplina) {
-		this.alunosDisciplina = alunosDisciplina;
 	}
 }

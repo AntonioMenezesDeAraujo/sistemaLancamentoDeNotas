@@ -15,8 +15,6 @@ public class Avaliacao {
 	private String codigo;
 	@Column(name = "descricao")
 	private String descricao;
-	@OneToOne
-	private Disciplina disciplina;
 
 	@OneToMany(mappedBy = "notaAluno")
 	private List<Nota> notas;
@@ -36,13 +34,4 @@ public class Avaliacao {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
-	public Disciplina getDisciplina() {
-		return disciplina;
-	}
-
-	public void setDisciplina(Disciplina disciplina) {
-		this.disciplina = disciplina;
-	}
-
 }

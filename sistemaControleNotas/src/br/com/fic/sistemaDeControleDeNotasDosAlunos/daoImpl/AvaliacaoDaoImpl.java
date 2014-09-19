@@ -8,7 +8,6 @@ import javax.persistence.Query;
 
 import br.com.fic.sistemaDeControleDeNotasDosAlunos.dao.AvaliacaoDao;
 import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Avaliacao;
-import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Disciplina;
 
 public class AvaliacaoDaoImpl extends ConexaoBancoDeDados implements AvaliacaoDao {
 	private static EntityManager entity;
@@ -19,7 +18,7 @@ public class AvaliacaoDaoImpl extends ConexaoBancoDeDados implements AvaliacaoDa
 	}
 	
 	@Override
-	public void cadastroDeAvaliacaoNaDisciplina(Avaliacao avaliacao) {
+	public void cadastroDeAvaliacao(Avaliacao avaliacao) {
 		entity.persist(avaliacao);
 		entity.getTransaction().commit();
 	}
@@ -31,8 +30,8 @@ public class AvaliacaoDaoImpl extends ConexaoBancoDeDados implements AvaliacaoDa
 	}
 
 	@Override
-	public List<Avaliacao> pesquisarAvaliacaoPorDisciplina(Disciplina disciplina) {
-		String jpql = "select avaliacao from Avaliacao avaliacao where avaliacao.disciplina.codigo = "+disciplina.getCodigo();
+	public List<Avaliacao> pesquisarAvaliacao() {
+		String jpql = "select avaliacao from Avaliacao avaliacao";
 		Query query = entity.createQuery(jpql);
 		List<Avaliacao> avaliacoes = new ArrayList<Avaliacao>();
 		avaliacoes = query.getResultList();
@@ -40,7 +39,7 @@ public class AvaliacaoDaoImpl extends ConexaoBancoDeDados implements AvaliacaoDa
 	}
 
 	@Override
-	public void excluirDisciplina( Avaliacao avaliacao) {
+	public void excluirAvaliacao(Avaliacao avaliacao) {
 		entity.remove(avaliacao);
 		entity.getTransaction().commit();
 	}

@@ -9,7 +9,6 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="estilo.css" />" />
 </head>
 <body>
-<jsp:useBean id="dao" class="br.com.fic.sistemaDeControleDeNotasDosAlunos.daoImpl.DisciplinaDaoImpl"/>
 	<div class="geral">
 		<jsp:include page="cabecalho.html" />
 		<form action="DisciplinaServlet?parametro=ServicoConsultaAvaliacao"  method="post">

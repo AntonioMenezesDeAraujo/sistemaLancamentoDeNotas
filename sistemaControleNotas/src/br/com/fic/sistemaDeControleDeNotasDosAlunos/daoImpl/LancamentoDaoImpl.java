@@ -5,7 +5,6 @@ import javax.persistence.EntityManager;
 import br.com.fic.sistemaDeControleDeNotasDosAlunos.dao.LancamentoDeNotaDao;
 import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Aluno;
 import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Avaliacao;
-import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Nota;
 
 public class LancamentoDaoImpl extends ConexaoBancoDeDados implements
 		LancamentoDeNotaDao {

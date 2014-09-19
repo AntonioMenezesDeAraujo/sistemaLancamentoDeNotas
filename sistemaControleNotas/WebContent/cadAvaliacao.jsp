@@ -8,30 +8,12 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="estilo.css" />"/>
 </head>
 	
-<body>
-<jsp:useBean id="dao" class="br.com.fic.sistemaDeControleDeNotasDosAlunos.daoImpl.DisciplinaDaoImpl"/>
-	
+<body>	
 	<div id="id" class="geral">
 		<jsp:include page="cabecalho.html" />
 		
 		<form action="AlunoServlet?parametro=ServicoCadastroAvaliacao" name="formulario" method="post">
 
-			<label>Disciplina:</label>
-			<select size="1" name="disciplina" class="styleCombobox">
-				<option selected value="Selecione">Selecione uma diciplina</option>
-					<c:forEach var="disciplina" items="${dao.todasDisciplinas}">
-						<option> ${disciplina.descricao}</option>
-					</c:forEach>
-			</select>
-			
-			<label>Curso:</label>
-			<select size="1" name="curso" class="styleCombobox">
-				<option selected value="Selecione">Selecione uma diciplina</option>
-					<c:forEach var="disciplina" items="${dao.todasDisciplinas}">
-						<option> ${disciplina.descricao}</option>
-					</c:forEach>
-			</select> 
-			<br></br>
 			<label>Código:</label> <input type="text" size="20" name="codigo" /><br></br>
 			
 			<label>Descrição:</label> <input type="text" size="20" name="descricao" /><br></br>
