@@ -12,13 +12,13 @@
 	<div id="id" class="geral">
 		<jsp:include page="cabecalho.html" />
 		
-		<form class="formulario" action="AlunoServlet?parametro=ServicoCadastroAvaliacao" name="formulario" method="post">
+		<form class="formulario" action="AvaliacaoServlet?parametro=ServicoSalvarAvaliacao" name="formulario" method="post">
 
 			<p><label>Código:</label> <input type="text" size="20" name="codigo" /></p>
 			
 			<p><label>Descrição:</label> <input type="text" size="20" name="descricao" /></p>
 			
-			<p><label>Peso:</label> <input type="text" size="20" name="mat" /></p>
+			<p><label>Peso:</label> <input type="text" size="20" name="peso" /></p>
 			
 			<p> 
 				<input type="submit" value="Cadastrar" /> 
@@ -27,7 +27,6 @@
 			</p>
 		</form>
 	</div>
-<!-- 	<input type="button" onclick="validaAluno()" value="click" /> -->
 </body>
 </html>
 

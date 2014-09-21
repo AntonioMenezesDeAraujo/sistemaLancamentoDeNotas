@@ -4,32 +4,45 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Consulta Aluno</title>
-<link rel="stylesheet" type="text/css" href="<c:url value="estilo.css" />" />
-<link rel="stylesheet" type="text/css" href="<c:url value="estilo.css" />" />
+<title>Consulta Avaliação</title>
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="estilo.css" />" />
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="estilo.css" />" />
 </head>
 <body>
-	<div class="geral">
-		<jsp:include page="cabecalho.html" />         
+	<form class="formulario"
+		action="AvaliacaoServlet?parametro=ServicoConsultaAvaliacao" method="post">
+		<div class="geral">
+			<jsp:include page="cabecalho.html" />
+			<p>
+				<label>Digite o código ou descricao da avaliacao: </label> 
+				<input type="text"	size="50" name="buscar" /> 
+				<input type="submit" value="Pesquisar"/>
+				
+			</p>
 			<table>
 				<tr>
 					<td>Código</td>
 					<td>Descrição</td>
+					<td>Peso</td>
 					<td>Ações</td>
 				</tr>
 				<c:forEach var="avaliacao" items="${lista}">
 					<tr>
 						<td>${avaliacao.descricao}</td>
 						<td>${avaliacao.codigo}</td>
-<%-- 						<td>${avaliacao.peso}</td> --%>
-						<td>
-							<a href="<c:url value="altDisciplina.jsp?codigo=${disciplina.codigo}&descricao=${disciplina.descricao}" />">Alterar</a>
-							<a href="<c:url value="excDisciplina.jsp?codigo=${disciplina.codigo}&descricao=${disciplina.descricao}" />">Excluir</a> 
+						<td>${avaliacao.peso}</td>
+						<td><a
+							href="<c:url value="altAvaliacao.jsp?codigo=${avaliacao.codigo}&descricao=${avaliacao.descricao}&peso=${avaliacao.peso}" />">Alterar</a>
+							<a
+							href="<c:url value="excAvaliacao.jsp?codigo=${avaliacao.codigo}&descricao=${avaliacao.descricao}&peso=${avaliacao.peso}" />">Excluir</a>
 						</td>
 					</tr>
 				</c:forEach>
 			</table>
-			
-	</div>
+
+		</div>
+	</form>
 </body>
 </html>
