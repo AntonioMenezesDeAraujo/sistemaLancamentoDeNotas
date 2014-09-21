@@ -12,20 +12,22 @@
 	<div id="id" class="geral">
 		<jsp:include page="cabecalho.html" />
 		
-		<form action="AlunoServlet?parametro=ServicoCadastroAvaliacao" name="formulario" method="post">
+		<form class="formulario" action="AlunoServlet?parametro=ServicoCadastroAvaliacao" name="formulario" method="post">
 
-			<label>Código:</label> <input type="text" size="20" name="codigo" /><br></br>
+			<p><label>Código:</label> <input type="text" size="20" name="codigo" /></p>
 			
-			<label>Descrição:</label> <input type="text" size="20" name="descricao" /><br></br>
+			<p><label>Descrição:</label> <input type="text" size="20" name="descricao" /></p>
 			
-			<label>Peso</label> <input type="text" size="20" name="mat" />
+			<p><label>Peso:</label> <input type="text" size="20" name="mat" /></p>
 			
-			<br></br> <input type="submit" value="Cadastro" /> 
-					  <input type="reset" value="Limpar" />
-					   <a href="index.htm"> <input	type="submit" value="Cancelar" /></a>
+			<p> 
+				<input type="submit" value="Cadastrar" /> 
+				<input type="reset" value="Limpar" />
+				<a href="index.htm"> <input	type="submit" value="Cancelar" /></a>
+			</p>
 		</form>
 	</div>
-	<input type="button" onclick="validaAluno()" value="click" />
+<!-- 	<input type="button" onclick="validaAluno()" value="click" /> -->
 </body>
 </html>
 

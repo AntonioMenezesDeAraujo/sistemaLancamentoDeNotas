@@ -11,10 +11,10 @@
 <body>
 	<div class="geral">
 		<jsp:include page="cabecalho.html" />
-		<form action="AlunoServlet?parametro=ServicoConsultaAluno"
+		<form class="formulario" action="AlunoServlet?parametro=ServicoConsultaAluno"
 			method="post">
 			<p>
-				<label>Digite nome ou matricula do aluno</label> 
+				<label>Digite nome ou matrícula do aluno:</label> 
 				<input type="text"	size="50" name="buscar" /> <input type="submit" value="Pesquisar"/>
 			</p>
          </form>
@@ -36,9 +36,7 @@
 					</tr>
 				</c:forEach>
 			</table>
-			
 
-		
 	</div>
 </body>
 </html>

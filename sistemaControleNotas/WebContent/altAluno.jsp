@@ -11,24 +11,29 @@
 </head>
 <body>
 <div class="geral">
-	   <jsp:include page="cabecalho.html" />
+	 <jsp:include page="cabecalho.html" />
 	 <%
 	 String matricula = request.getParameter("matricula");
 	 String nome = request.getParameter("nome");
 	 
 	 %>
-     	<form action="AlunoServlet?parametro=ServicoAlterarAluno" aling="center" method="post">
+     	<form class="formulario" action="AlunoServlet?parametro=ServicoAlterarAluno" aling="center" method="post">
 			
-			<label>Nome:</label>
-			<input type="text" size="20" name="nomeAlterado" value="<%= nome%>"/><br></br>
+			<p>
+				<label>Nome:</label>
+				<input type="text" size="20" name="nomeAlterado" value="<%= nome%>"/>
+			</p>
 			
-			<label>Matrícula</label>
-			<input type="text" size="20" name="matriculaAlterado" value="<%=  matricula%>" /> <br></br>
+			<p>
+				<label>Matrícula:</label>
+				<input type="text" size="20" name="matriculaAlterado" value="<%=  matricula%>" />
+			</p>
 			
-			<input  type="submit" value="Alterar"></input>
-			<input  type="reset" value="Limpar"></input>
-			
-			<a href="index.htm"><input  type="submit" value="Cancelar"></input></a>
+			<p>
+				<input  type="submit" value="Alterar"></input>
+				<input  type="reset" value="Limpar"></input>
+				<a href="index.htm"><input  type="submit" value="Cancelar"></input></a>
+			</p>
 			
 			<input  type="hidden" name="matriculaOriginal" value="<%= matricula%>"/>
 			<input  type="hidden" name="nomeOriginal" value="<%= nome%>"/>

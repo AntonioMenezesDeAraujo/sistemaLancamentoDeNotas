@@ -10,26 +10,12 @@
 </head>
 <body>
 	<div class="geral">
-		<jsp:include page="cabecalho.html" />
-		<form action="DisciplinaServlet?parametro=ServicoConsultaAvaliacao"  method="post">
-			
-			<label>Disciplina:</label>
-			<select size="1" name="busca" class="styleCombobox">
-				<option selected value="Selecione">Selecione uma diciplina</option>
-					<c:forEach var="disciplina" items="${dao.todasDisciplinas}">
-						<option> ${disciplina.descricao}</option>
-					</c:forEach>
-			</select>
-
-			<input type="submit" value="Pesquisar"/>
-			
-         </form>
-         
+		<jsp:include page="cabecalho.html" />         
 			<table>
 				<tr>
-					<td>Codigo</td>
-					<td>Descricao</td>
 					<td>Código</td>
+					<td>Descrição</td>
+					<td>Ações</td>
 				</tr>
 				<c:forEach var="avaliacao" items="${lista}">
 					<tr>

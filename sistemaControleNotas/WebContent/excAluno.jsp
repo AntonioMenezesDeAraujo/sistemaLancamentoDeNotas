@@ -15,10 +15,10 @@
 	   String nome = request.getParameter("nome");
 	   String matricula = request.getParameter("matricula");
 	   %>
-     	<form action="AlunoServlet?parametro=ServicoExcluirAluno" aling="center" method="post">
+     	<form class="formulario" action="AlunoServlet?parametro=ServicoExcluirAluno" aling="center" method="post">
 			<label>Nome:</label>
 			<input type="text" size="20" name="nome" value = "<%= nome%>" /><br></br>
-			<label>Matrícula</label>
+			<label>Matrícula:</label>
 			<input type="text" size="20" name="mat" value = "<%= matricula %>" /> <br></br>
 			<input  type="submit" value="Excluir"></input>
 			<input  type="reset" value="Limpar"></input>

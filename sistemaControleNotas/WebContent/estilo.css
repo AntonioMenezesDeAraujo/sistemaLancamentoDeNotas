@@ -2,52 +2,32 @@
 
 body {
 	background-color: #fff;
-	background-image: url(imagens/biblioteca-imagem.jpg);
-	background-attachment: fixed;
+	background: url(imagens/bg_2.jpg) repeat-x;
+	font: 14px Trebuchet MS;
 }
 
 .geral {
 	width: 80%;
-	height: 1000px;
-	margin-left: 10%;
-	background-image: url(imagens/corpo-pagina.jpg);
-	margin-bottom: 5px;
-}
-
-.imagem-lateral {
-	border-right: 1px solid #00F;
-	width: 50px;
-	height: 1000px;
-	background-image: url(imagens/lateral-pagina.jpg);
-	float: left;
-}
-
-.cabecalho {
-	height: 210px;
-	width: 450px;
-	background-image: url(imagens/cabecalho-lateral.jpg);
-	float: left;
-	margin-bottom: 3px;
-}
-
-.parte-esquerda-cabecalho {
-	height: 210px;
-	background-image: url(imagens/parte-esquerda-cabecalho.jpg);
-	margin-bottom: 3px;
+	margin: 10%;
+	background: #fff;
+	border-radius: 20px;
 }
 
 .menu {
 	height: 32px;
 	margin: 0px;
-	background-image: url(imagens/background-menu.jpg);
+	background: url(imagens/main_bg.jpg) repeat-x;
+	border-radius: 20px;
 }
 
 .menu ul {
-	font: 16px Arial, Helvetica, sans-serif;
+	font: 16px Trebuchet MS;
 	list-style: none;
 	margin: 0px;
 	padding: 0px;
 	font-weight: bold;
+	border-radius: 20px;
+	z-index: 10;
 }
 
 .menu ul li {
@@ -58,11 +38,12 @@ body {
 
 .menu ul li a {
 	color: #555;
-	background-image: url(imagens/background-menu.jpg);
+	background: url(imagens/main_bg.jpg) repeat-x;
 	text-decoration: none;
 	margin: 0 1px;
 	padding: 4px 15px;
 	display: block;
+	border-radius: 20px;
 }
 
 .menu li ul {
@@ -70,8 +51,7 @@ body {
 }
 
 .menu ul li a:hover {
-	background: #066;
-	color: #fff;
+	background: url(imagens/bg_2.jpg) repeat-x;
 }
 
 .menu li:hover ul {
@@ -85,7 +65,9 @@ body {
 }
 
 .formulario {
-	margin-left: 40%;
+	padding-top: 70px;
+	padding-left: 10px;
+	padding-bottom: 100px;
 }
 
 .styleCombobox {
