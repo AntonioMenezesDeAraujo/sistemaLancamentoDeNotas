@@ -42,11 +42,12 @@ public class AlunoServlet extends HttpServlet {
 				// Recebe o String após a execução da lógica
 				pagina = servico.getNomePagina();
 				servico.executaLogica(request, response);
+				pagina = pagina + "?message=Cadastro realizado com sucesso!";
 				RequestDispatcher dispatcher = request.getRequestDispatcher(pagina);  
 				dispatcher.forward(request, response);
 
 			} catch (Exception e) {
-				request.setAttribute("erro", e.getMessage());
+				pagina = pagina + "?erro=" + e.getCause().getCause().getMessage();
 				RequestDispatcher dispatcher = request.getRequestDispatcher(pagina);  
 				dispatcher.forward(request, response);
 			}

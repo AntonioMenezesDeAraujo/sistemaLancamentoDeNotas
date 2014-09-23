@@ -20,7 +20,7 @@ public class ServicoAlterarAluno implements Servico{
 		String matriculaAlterada = req.getParameter("matriculaAlterado");
 		String nomeAlterado = req.getParameter("nomeAlterado");
 		
-		Aluno aluno = dao.pesquisarAlunoPorMaricula(matriculaOriginal).get(0);
+		Aluno aluno = dao.pesquisarAlunoPorMatricula(matriculaOriginal).get(0);
 		
 		aluno.setNome(nomeAlterado);
 		aluno.setMatricula(matriculaAlterada);

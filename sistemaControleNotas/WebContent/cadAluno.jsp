@@ -12,16 +12,25 @@
 		
 		<%
 	 		String erro = request.getParameter("erro");
+			String message = request.getParameter("message");
+			String nome = request.getParameter("nome");
+			String matricula = request.getParameter("mat");
 	 	%>
 		
 		<form class="formulario" action="AlunoServlet?parametro=ServicoCadastroAluno" name="formulario" method="post">
 			<%
-				if(erro != null && !erro.isEmpty()){
-					out.print("<div>" + erro + "</div>");
+				if(message != null && !message.isEmpty()){
+					out.print("<div class=\"sucess\">" + message + "</div>");
 				}
+				if(erro != null && !erro.isEmpty()){
+					out.print("<div class=\"error\">" + erro + "</div>");
+				}
+				
+				nome = nome != null ? nome : "";
+				matricula = matricula != null ? matricula : "";
 	 		%>
-			<p><label>Nome:</label> <input type="text" size="20" name="nome" /></p>
-			<p><label>Matrícula:</label> <input type="text" size="20" name="mat" /></p>
+			<p><label>Nome:</label> <input type="text" size="20" name="nome" value="<%= nome %>" /></p>
+			<p><label>Matrícula:</label> <input type="text" size="20" name="mat" value="<%= matricula %>" /></p>
 			
 			<p> 
 				<input type="submit" value="Cadastrar" /> 

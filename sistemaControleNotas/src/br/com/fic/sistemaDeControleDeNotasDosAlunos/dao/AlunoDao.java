@@ -14,7 +14,7 @@ public interface AlunoDao {
 
 	List<Aluno> pesquisarAlunoPorNome(String nome);
 
-	List<Aluno> pesquisarAlunoPorMaricula(String matricula);
+	List<Aluno> pesquisarAlunoPorMatricula(String matricula);
 
 	void excluirAluno(String matriculaOuNome);
 	

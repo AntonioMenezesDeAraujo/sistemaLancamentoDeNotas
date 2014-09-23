@@ -85,4 +85,35 @@ body {
 	opacity: 0;
 	filter: alpha(opacity = 0);
 }
-.comboboxFocus { border:dotted 1px #CCC; }
+
+.comboboxFocus { 
+	border:dotted 1px #CCC; 
+}
+
+.error{
+	height: 17px;
+	background: #ff9191;
+	color: #d90000;
+	border-radius: 5px;
+	width: 400px;
+	vertical-align: middle;
+	align-content: center;
+	padding: 10px;
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.sucess{
+	height: 17px;
+	background: #bbffbb;
+	color: #009500;
+	border-radius: 5px;
+	width: 400px;
+	vertical-align: middle;
+	align-content: center;
+	padding: 10px;
+	font-weight: bold;
+	font-size: 13px;
+}
+
+

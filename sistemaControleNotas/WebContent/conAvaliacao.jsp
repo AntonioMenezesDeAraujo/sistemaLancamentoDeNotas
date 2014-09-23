@@ -23,21 +23,20 @@
 			</p>
 			<table>
 				<tr>
+					<td></td>
 					<td>Código</td>
 					<td>Descrição</td>
 					<td>Peso</td>
-					<td>Ações</td>
 				</tr>
 				<c:forEach var="avaliacao" items="${lista}">
 					<tr>
+						<td>
+							<a href="<c:url value="altAvaliacao.jsp?codigo=${avaliacao.codigo}&descricao=${avaliacao.descricao}&peso=${avaliacao.peso}" />"><img src="imagens/editar.png" title="Alterar" /></a>
+							<a href="<c:url value="excAvaliacao.jsp?codigo=${avaliacao.codigo}&descricao=${avaliacao.descricao}&peso=${avaliacao.peso}" />"><img src="imagens/excluir.png" title="Excluir"/></a>
+						</td>
 						<td>${avaliacao.descricao}</td>
 						<td>${avaliacao.codigo}</td>
 						<td>${avaliacao.peso}</td>
-						<td><a
-							href="<c:url value="altAvaliacao.jsp?codigo=${avaliacao.codigo}&descricao=${avaliacao.descricao}&peso=${avaliacao.peso}" />">Alterar</a>
-							<a
-							href="<c:url value="excAvaliacao.jsp?codigo=${avaliacao.codigo}&descricao=${avaliacao.descricao}&peso=${avaliacao.peso}" />">Excluir</a>
-						</td>
 					</tr>
 				</c:forEach>
 			</table>

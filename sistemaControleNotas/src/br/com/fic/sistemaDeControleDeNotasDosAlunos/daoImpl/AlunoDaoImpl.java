@@ -37,8 +37,8 @@ public class AlunoDaoImpl extends ConexaoBancoDeDados implements AlunoDao {
 			if(aluno.getMatricula() == null || aluno.getMatricula().isEmpty()){
 				throw new Exception("Matrícula deve ser preenchida!");
 			}else{
-				List<Aluno> alunos = pesquisarAlunoPorMaricula(aluno.getMatricula());
-				if(alunos == null || alunos.isEmpty()){
+				List<Aluno> alunos = pesquisarAlunoPorMatricula(aluno.getMatricula());
+				if(alunos != null && !alunos.isEmpty()){
 					throw new Exception("Matrícula já existe!");
 				}
 			}
@@ -72,7 +72,7 @@ public class AlunoDaoImpl extends ConexaoBancoDeDados implements AlunoDao {
 	}
 
 	@Override
-	public List<Aluno> pesquisarAlunoPorMaricula(String matricula) {
+	public List<Aluno> pesquisarAlunoPorMatricula(String matricula) {
 		List<Aluno> alunos = new ArrayList<Aluno>();
 		Query query = entity
 				.createQuery("select aluno from Aluno aluno where aluno.matricula = "
