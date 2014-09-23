@@ -9,7 +9,7 @@ import br.com.fic.sistemaDeControleDeNotasDosAlunos.daoImpl.AlunoDaoImpl;
 public class ServicoExcluirAluno implements Servico{
 
 	@Override
-	public String executaLogica(HttpServletRequest req, HttpServletResponse res)
+	public void executaLogica(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
 			
 		String matricula = req.getParameter("mat");
@@ -17,6 +17,10 @@ public class ServicoExcluirAluno implements Servico{
 		AlunoDao dao = new AlunoDaoImpl();
 		dao.excluirAluno(matricula);
 
+	}
+
+	@Override
+	public String getNomePagina() {
 		return "excAluno.jsp";
 	}
 

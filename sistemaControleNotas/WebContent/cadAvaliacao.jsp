@@ -23,7 +23,6 @@
 			<p> 
 				<input type="submit" value="Cadastrar" /> 
 				<input type="reset" value="Limpar" />
-				<a href="index.htm"> <input	type="submit" value="Cancelar" /></a>
 			</p>
 		</form>
 	</div>

@@ -9,7 +9,7 @@ import br.com.fic.sistemaDeControleDeNotasDosAlunos.daoImpl.AlunoDaoImpl;
 public class ServicoConsultaAluno implements Servico {
 
 	@Override
-	public String executaLogica(HttpServletRequest req, HttpServletResponse res)
+	public void executaLogica(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
 		
 		String criterio = req.getParameter("buscar");
@@ -17,6 +17,10 @@ public class ServicoConsultaAluno implements Servico {
 		AlunoDao dao = new AlunoDaoImpl();
 		req.setAttribute( "lista", dao.pesquisarAlunoPorNome(criterio));  
 
+	}
+
+	@Override
+	public String getNomePagina() {
 		return "conAluno.jsp";
 	}
 

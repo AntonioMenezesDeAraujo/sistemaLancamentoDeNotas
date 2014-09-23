@@ -10,7 +10,7 @@ import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Aluno;
 public class ServicoAlterarAluno implements Servico{
 
 	@Override
-	public String executaLogica(HttpServletRequest req, HttpServletResponse res)
+	public void executaLogica(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
 		AlunoDao dao = new AlunoDaoImpl();
 		
@@ -27,6 +27,10 @@ public class ServicoAlterarAluno implements Servico{
 		
 		dao.alterarDadosDoAluno(aluno);
 
+	}
+
+	@Override
+	public String getNomePagina() {
 		return "altAluno.jsp";
 	}
 

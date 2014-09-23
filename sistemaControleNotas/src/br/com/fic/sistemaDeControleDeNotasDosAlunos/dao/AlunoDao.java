@@ -6,7 +6,7 @@ import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Aluno;
 
 public interface AlunoDao {
 
-	void salvarAluno(Aluno aluno);
+	void salvarAluno(Aluno aluno) throws Exception;
 
 	void alterarDadosDoAluno(Aluno aluno);
 

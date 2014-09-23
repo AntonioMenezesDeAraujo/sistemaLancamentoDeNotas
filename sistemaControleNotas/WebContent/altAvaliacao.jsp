@@ -37,7 +37,6 @@
 			<p>
 				<input  type="submit" value="Alterar"></input>
 				<input  type="reset" value="Limpar"></input>
-				<a href="index.htm"><input  type="submit" value="Cancelar"></input></a>
 			</p>
 			
 			<input  type="hidden" name="codigo" value="<%= codigo%>"/>

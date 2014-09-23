@@ -12,7 +12,7 @@ import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Avaliacao;
 public class ServicoAlterarAvaliacao implements Servico{
 
 	@Override
-	public String executaLogica(HttpServletRequest req, HttpServletResponse res)
+	public void executaLogica(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
 		AvaliacaoDao dao = new AvaliacaoDaoImpl();
 		
@@ -42,6 +42,10 @@ public class ServicoAlterarAvaliacao implements Servico{
 		
 		dao.alterarDadosDaAvaliacao(avaliacao);
 		
+	}
+
+	@Override
+	public String getNomePagina() {
 		return "altAvaliacao.jsp";
 	}
 

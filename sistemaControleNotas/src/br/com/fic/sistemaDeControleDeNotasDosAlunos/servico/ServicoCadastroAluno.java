@@ -10,8 +10,7 @@ import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Aluno;
 public class ServicoCadastroAluno implements Servico {
 
 	@Override
-	public String executaLogica(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+	public void executaLogica(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String nome;
 		String matricula;
 
@@ -23,6 +22,10 @@ public class ServicoCadastroAluno implements Servico {
 
 		AlunoDao dao = new AlunoDaoImpl();
 		dao.salvarAluno(aluno);
+	}
+
+	@Override
+	public String getNomePagina() {
 		return "cadAluno.jsp";
 	}
 

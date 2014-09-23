@@ -18,9 +18,33 @@ public class AlunoDaoImpl extends ConexaoBancoDeDados implements AlunoDao {
 	}
 
 	@Override
-	public void salvarAluno(Aluno aluno) {
+	public void salvarAluno(Aluno aluno) throws Exception {
+		try {
+			validaCadastroAluno(aluno);
 			entity.persist(aluno);
 			entity.getTransaction().commit();
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+			
+	}
+	
+	private void validaCadastroAluno(Aluno aluno) throws Exception{
+		try {
+			if(aluno.getNome() == null || aluno.getNome().isEmpty()){
+				throw new Exception("Nome deve ser preenchido!");
+			}
+			if(aluno.getMatricula() == null || aluno.getMatricula().isEmpty()){
+				throw new Exception("Matrícula deve ser preenchida!");
+			}else{
+				List<Aluno> alunos = pesquisarAlunoPorMaricula(aluno.getMatricula());
+				if(alunos == null || alunos.isEmpty()){
+					throw new Exception("Matrícula já existe!");
+				}
+			}
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
 	}
 
 	@Override

@@ -10,7 +10,7 @@ import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Avaliacao;
 public class ServicoSalvarAvaliacao implements Servico {
 
 	@Override
-	public String executaLogica(HttpServletRequest req, HttpServletResponse res)
+	public void executaLogica(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
 		String descricao = req.getParameter("descricao");
 		String codigo = req.getParameter("codigo");
@@ -23,6 +23,10 @@ public class ServicoSalvarAvaliacao implements Servico {
 		
 		AvaliacaoDao dao = new AvaliacaoDaoImpl();
 		dao.cadastroDeAvaliacao(avaliacao);
+	}
+
+	@Override
+	public String getNomePagina() {
 		return "cadAvaliacao.jsp";
 	}
 

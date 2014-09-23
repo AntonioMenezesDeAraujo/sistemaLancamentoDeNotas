@@ -12,7 +12,7 @@ import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Avaliacao;
 public class ServicoExcluirAvaliacao implements Servico{
 
 	@Override
-	public String executaLogica(HttpServletRequest req, HttpServletResponse res)
+	public void executaLogica(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
 		
 		String codigo = req.getParameter("codigo");
@@ -32,6 +32,10 @@ public class ServicoExcluirAvaliacao implements Servico{
 		
 		dao.excluirAvaliacao(avaliacao);
 
+	}
+
+	@Override
+	public String getNomePagina() {
 		return "excAvaliacao.jsp";
 	}
 

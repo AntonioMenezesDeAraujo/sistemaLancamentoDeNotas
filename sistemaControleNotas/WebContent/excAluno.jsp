@@ -22,7 +22,6 @@
 			<input type="text" size="20" name="mat" value = "<%= matricula %>" /> <br></br>
 			<input  type="submit" value="Excluir"></input>
 			<input  type="reset" value="Limpar"></input>
-			<a href="index.htm"><input  type="submit" value="Cancelar"></input></a>
 		</form>
 	</div>
 </body>

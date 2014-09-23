@@ -9,13 +9,16 @@ import br.com.fic.sistemaDeControleDeNotasDosAlunos.daoImpl.AvaliacaoDaoImpl;
 public class ServicoConsultaAvaliacao implements Servico{
 
 	@Override
-	public String executaLogica(HttpServletRequest req, HttpServletResponse res)
+	public void executaLogica(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
 				
 		AvaliacaoDao dao = new AvaliacaoDaoImpl();
 		req.setAttribute( "lista", dao.pesquisarAvaliacao());  
+	}
 
-		return "conAvaliacao.jsp";	
+	@Override
+	public String getNomePagina() {
+		return "conAvaliacao.jsp";
 	}
 
 }

@@ -31,7 +31,6 @@
 			<input  type="submit" value="Excluir"></input>
 			<input  type="reset" value="Limpar"></input>
 			
-			<a href="index.htm"><input  type="submit" value="Cancelar"></input></a>
 		</form>
 	</div>
 </body>
