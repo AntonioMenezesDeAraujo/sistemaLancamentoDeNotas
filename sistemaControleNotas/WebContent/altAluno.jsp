@@ -6,36 +6,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Alterar Aluno</title>
 <link rel="stylesheet" type="text/css" href="<c:url value="estilo.css" />"/>
-<link rel="stylesheet" type="text/css" href="<c:url value="estilo.css" />"/>
 
 </head>
 <body>
 <div class="geral">
 	 <jsp:include page="cabecalho.html" />
 	 <%
-	 String matricula = request.getParameter("matricula");
-	 String nome = request.getParameter("nome");
-	 
+	 	String matricula = request.getParameter("matricula");
+	 	String nome = request.getParameter("nome");
 	 %>
-     	<form class="formulario" action="AlunoServlet?parametro=ServicoAlterarAluno" aling="center" method="post">
-			
+     	<form class="formulario" action="AlunoServlet?parametro=ServicoAlterarAluno" method="post">
 			<p>
 				<label>Nome:</label>
-				<input type="text" size="20" name="nomeAlterado" value="<%= nome%>"/>
+				<input type="text" size="20" name="nomeAlterado" value="<%= nome %>"/>
 			</p>
-			
-			<p>
-				<label>Matrícula:</label>
-				<input type="text" size="20" name="matriculaAlterado" value="<%=  matricula%>" />
-			</p>
-			
+						
 			<p>
 				<input  type="submit" value="Alterar"></input>
 				<input  type="reset" value="Limpar"></input>
 			</p>
 			
-			<input  type="hidden" name="matriculaOriginal" value="<%= matricula%>"/>
-			<input  type="hidden" name="nomeOriginal" value="<%= nome%>"/>
+			<input  type="hidden" name="matriculaOriginal" value="<%= matricula %>"/>
+			<input  type="hidden" name="nomeOriginal" value="<%= nome %>"/>
 		</form>
 	</div>
 </body>

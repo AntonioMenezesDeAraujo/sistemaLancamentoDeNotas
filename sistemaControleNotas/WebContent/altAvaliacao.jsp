@@ -4,8 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Alterar Aluno</title>
-<link rel="stylesheet" type="text/css" href="<c:url value="estilo.css" />"/>
+<title>Alterar Avaliação</title>
 <link rel="stylesheet" type="text/css" href="<c:url value="estilo.css" />"/>
 
 </head>
@@ -18,7 +17,7 @@
 	 String peso = request.getParameter("peso");
 	 
 	 %>
-     	<form class="formulario" action="AvaliacaoServlet?parametro=ServicoAlterarAvaliacao" aling="center" method="post">
+     	<form class="formulario" action="AvaliacaoServlet?parametro=ServicoAlterarAvaliacao" method="post">
 			
 			<p>
 				<label>Codigo:</label>

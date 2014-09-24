@@ -10,20 +10,15 @@ import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Aluno;
 public class ServicoAlterarAluno implements Servico{
 
 	@Override
-	public void executaLogica(HttpServletRequest req, HttpServletResponse res)
-			throws Exception {
+	public void executaLogica(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		AlunoDao dao = new AlunoDaoImpl();
 		
 		String matriculaOriginal = req.getParameter("matriculaOriginal");
-		String nomeOriginal = req.getParameter("nomeOriginal");
-		
-		String matriculaAlterada = req.getParameter("matriculaAlterado");
 		String nomeAlterado = req.getParameter("nomeAlterado");
 		
 		Aluno aluno = dao.pesquisarAlunoPorMatricula(matriculaOriginal).get(0);
 		
 		aluno.setNome(nomeAlterado);
-		aluno.setMatricula(matriculaAlterada);
 		
 		dao.alterarDadosDoAluno(aluno);
 
@@ -31,7 +26,7 @@ public class ServicoAlterarAluno implements Servico{
 
 	@Override
 	public String getNomePagina() {
-		return "altAluno.jsp";
+		return "conAluno.jsp";
 	}
 
 }

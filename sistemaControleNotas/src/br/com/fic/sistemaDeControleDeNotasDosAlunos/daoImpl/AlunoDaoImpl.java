@@ -64,9 +64,7 @@ public class AlunoDaoImpl extends ConexaoBancoDeDados implements AlunoDao {
 	@Override
 	public List<Aluno> pesquisarAlunoPorNome(String nome) {
 		List<Aluno> alunos = new ArrayList<Aluno>();
-		Query query = entity
-				.createQuery("select aluno from Aluno aluno where upper(aluno.nome) like upper('%"
-						+ nome + "%')");
+		Query query = entity.createQuery("select aluno from Aluno aluno where upper(aluno.nome) like upper('%" + nome + "%')");
 		alunos = query.getResultList();
 		return alunos;
 	}
@@ -74,9 +72,7 @@ public class AlunoDaoImpl extends ConexaoBancoDeDados implements AlunoDao {
 	@Override
 	public List<Aluno> pesquisarAlunoPorMatricula(String matricula) {
 		List<Aluno> alunos = new ArrayList<Aluno>();
-		Query query = entity
-				.createQuery("select aluno from Aluno aluno where aluno.matricula = "
-						+ matricula);
+		Query query = entity.createQuery("select aluno from Aluno aluno where aluno.matricula = '" + matricula + "'");
 		alunos = query.getResultList();
 		return alunos;
 	}
@@ -86,7 +82,6 @@ public class AlunoDaoImpl extends ConexaoBancoDeDados implements AlunoDao {
 		List<Aluno> alunos = retornarTodosOsAluno();
 		for (Aluno aluno : alunos) {
 			if (aluno.getNome().equalsIgnoreCase(matriculaOuNome) || aluno.getMatricula().equalsIgnoreCase(matriculaOuNome)) {
-				entity.getTransaction().begin();
 				entity.remove(aluno);
 				entity.getTransaction().commit();
 				return;

@@ -9,8 +9,7 @@ import br.com.fic.sistemaDeControleDeNotasDosAlunos.daoImpl.AlunoDaoImpl;
 public class ServicoExcluirAluno implements Servico{
 
 	@Override
-	public void executaLogica(HttpServletRequest req, HttpServletResponse res)
-			throws Exception {
+	public void executaLogica(HttpServletRequest req, HttpServletResponse res) throws Exception {
 			
 		String matricula = req.getParameter("mat");
 		
@@ -21,7 +20,7 @@ public class ServicoExcluirAluno implements Servico{
 
 	@Override
 	public String getNomePagina() {
-		return "excAluno.jsp";
+		return "conAluno.jsp";
 	}
 
 }

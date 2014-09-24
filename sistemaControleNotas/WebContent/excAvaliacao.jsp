@@ -5,7 +5,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Excluir Avaliação</title>
 <link rel="stylesheet" type="text/css" href="<c:url value="estilo.css" />"/>
-<link rel="stylesheet" type="text/css" href="<c:url value="estilo.css" />"/>
 
 </head>
 <body>
@@ -13,23 +12,31 @@
 	   <jsp:include page="cabecalho.html" />
 	   
 	   <%
-	   String codigo = request.getParameter("codigo");
-	   String descricao = request.getParameter("descricao");
-	   String peso = request.getParameter("peso");
+		   String codigo = request.getParameter("codigo");
+		   String descricao = request.getParameter("descricao");
+		   String peso = request.getParameter("peso");
 	   %>
 	   
-     	<form class="formulario" action="AvaliacaoServlet?parametro=ServicoExcluirAvaliacao" aling="center" method="post">
-			<label>Código:</label>
-			<input type="text" size="20" name="codigo" value = "<%= codigo%>" /><br></br>
+     	<form class="formulario" action="AvaliacaoServlet?parametro=ServicoExcluirAvaliacao" method="post">
+			<p>
+				<label>Código:</label>
+				<input type="text" size="20" name="codigo" value = "<%= codigo%>" />
+			</p>
 		
-			<label>Descricão:</label>
-			<input type="text" size="20" name="descricao" value = "<%= descricao %>" /> <br></br>
+			<p>
+				<label>Descricão:</label>
+				<input type="text" size="20" name="descricao" value = "<%= descricao %>" /> 
+			</p>
 			
-			<label>Peso:</label>
-			<input type="text" size="20" name="peso" value = "<%= peso %>" /> <br></br>
+			<p>
+				<label>Peso:</label>
+				<input type="text" size="20" name="peso" value = "<%= peso %>" /> 
+			</p>
 			
-			<input  type="submit" value="Excluir"></input>
-			<input  type="reset" value="Limpar"></input>
+			<p>
+				<input  type="submit" value="Excluir"></input>
+				<input  type="reset" value="Limpar"></input>
+			</p>
 			
 		</form>
 	</div>
