@@ -12,17 +12,10 @@
 <div class="geral">
 	 <jsp:include page="cabecalho.html" />
 	 <%
-	 String codigo = request.getParameter("codigo");
-	 String descricao = request.getParameter("descricao");
-	 String peso = request.getParameter("peso");
-	 
+		 String codigo = request.getParameter("codigo");
+		 String descricao = request.getParameter("descricao");
 	 %>
      	<form class="formulario" action="AvaliacaoServlet?parametro=ServicoAlterarAvaliacao" method="post">
-			
-			<p>
-				<label>Codigo:</label>
-				<input type="text" size="20" name="codigoAlterado" value="<%= codigo%>"/>
-			</p>
 			
 			<p>
 				<label>Descrição:</label>
@@ -30,17 +23,12 @@
 			</p>
 			
 			<p>
-				<label>Peso:</label>
-				<input type="text" size="20" name="pesoAlterado" value="<%=  peso%>" />
-			</p>
-			<p>
 				<input  type="submit" value="Alterar"></input>
 				<input  type="reset" value="Limpar"></input>
 			</p>
 			
 			<input  type="hidden" name="codigo" value="<%= codigo%>"/>
 			<input  type="hidden" name="descricao" value="<%= descricao%>"/>
-			<input  type="hidden" name="peso" value="<%= peso%>"/>
 		</form>
 	</div>
 </body>

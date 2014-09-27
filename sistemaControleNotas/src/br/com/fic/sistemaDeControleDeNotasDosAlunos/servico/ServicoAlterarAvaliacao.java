@@ -12,17 +12,13 @@ import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Avaliacao;
 public class ServicoAlterarAvaliacao implements Servico{
 
 	@Override
-	public void executaLogica(HttpServletRequest req, HttpServletResponse res)
-			throws Exception {
+	public void executaLogica(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		AvaliacaoDao dao = new AvaliacaoDaoImpl();
 		
 		String codigoOriginal = req.getParameter("codigo");
-		String descricaoOriginal = req.getParameter("descricao");
-		String pesoOriginal = req.getParameter("peso");
 		
 		String codigoAlterada = req.getParameter("codigoAlterado");
 		String descricaoAlterado = req.getParameter("descricaoAlterado");
-		String pesoAlterado = req.getParameter("pesoAlterado");
 		
 		List<Avaliacao> avaliacoes = dao.pesquisarAvaliacao();
 		Avaliacao  avaliacao = null;
@@ -37,7 +33,6 @@ public class ServicoAlterarAvaliacao implements Servico{
 		if(avaliacao != null){
 			avaliacao.setCodigo(codigoAlterada);
 			avaliacao.setDescricao(descricaoAlterado);
-			avaliacao.setPeso(pesoAlterado);
 		}
 		
 		dao.alterarDadosDaAvaliacao(avaliacao);
@@ -46,7 +41,7 @@ public class ServicoAlterarAvaliacao implements Servico{
 
 	@Override
 	public String getNomePagina() {
-		return "altAvaliacao.jsp";
+		return "conAvaliacao.jsp";
 	}
 
 }
