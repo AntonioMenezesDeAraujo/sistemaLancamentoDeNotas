@@ -11,13 +11,30 @@
 	<div id="id" class="geral">
 		<jsp:include page="cabecalho.html" />
 		
-		<form class="formulario" action="AvaliacaoServlet?parametro=ServicoSalvarAvaliacao" name="formulario" method="post">
+		<%
+	 		String erro = request.getParameter("erro");
+			String message = request.getParameter("message");
+			String codigo = request.getParameter("codigo");
+			String descricao = request.getParameter("descricao");
+	 	%>
+		
+		<form class="formulario" action="AvaliacaoServlet?parametro=ServicoCadastroAvaliacao" name="formulario" method="post">
 
-			<p><label>Código:</label> <input type="text" size="20" name="codigo" /></p>
+			<%
+				if(message != null && !message.isEmpty()){
+					out.print("<div class=\"sucess\">" + message + "</div>");
+				}
+				if(erro != null && !erro.isEmpty()){
+					out.print("<div class=\"error\">" + erro + "</div>");
+				}
+				
+				codigo = codigo != null ? codigo : "";
+				descricao = descricao != null ? descricao : "";
+	 		%>
+	 		
+			<p><label>Código:</label> <input type="text" size="20" name="codigo" value="<%= codigo %>"/></p>
 			
-			<p><label>Descrição:</label> <input type="text" size="20" name="descricao" /></p>
-			
-			<p><label>Peso:</label> <input type="text" size="20" name="peso" /></p>
+			<p><label>Descrição:</label> <input type="text" size="20" name="descricao" value="<%= descricao %>"/></p>
 			
 			<p> 
 				<input type="submit" value="Cadastrar" /> 

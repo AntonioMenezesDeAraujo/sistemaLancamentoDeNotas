@@ -6,7 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Avaliacao {
@@ -15,16 +14,6 @@ public class Avaliacao {
 	private String codigo;
 	@Column(name = "descricao")
 	private String descricao;
-	@Column(name = "peso")
-	private String peso;
-
-	public String getPeso() {
-		return peso;
-	}
-
-	public void setPeso(String peso) {
-		this.peso = peso;
-	}
 
 	@OneToMany(mappedBy = "notaAluno")
 	private List<Nota> notas;
