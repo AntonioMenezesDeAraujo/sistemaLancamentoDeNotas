@@ -9,12 +9,10 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
-
 @Entity
 @NamedQueries({
-	@NamedQuery(name="aluno.todosAlunos",query="select aluno from Aluno aluno"),
-	@NamedQuery(name="aluno.selecionaTodosAlunoPorNome" , query="select aluno from Aluno aluno where upper(aluno.nome) = upper(':nome')")
-})
+		@NamedQuery(name = "aluno.todosAlunos", query = "select aluno from Aluno aluno"),
+		@NamedQuery(name = "aluno.selecionaTodosAlunoPorNome", query = "select aluno from Aluno aluno where upper(aluno.nome) = upper(':nome')") })
 public class Aluno {
 	@Id
 	@Column(name = "matricula")
@@ -23,7 +21,17 @@ public class Aluno {
 	private String nome;
 	@OneToMany(mappedBy = "aluno")
 	private List<Nota> notas;
-	
+	@Column(name = "media")
+	private Double media;
+
+	public Double getMedia() {
+		return media;
+	}
+
+	public void setMedia(Double media) {
+		this.media = media;
+	}
+
 	public String getMatricula() {
 		return matricula;
 	}

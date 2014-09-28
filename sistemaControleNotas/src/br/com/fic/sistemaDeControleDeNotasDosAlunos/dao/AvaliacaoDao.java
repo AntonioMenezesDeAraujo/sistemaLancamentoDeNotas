@@ -17,4 +17,5 @@ public interface AvaliacaoDao {
 	List<Avaliacao> pesquisarAvaliacaoPorDescricao(String descricao);
 
 	void excluirAvaliacao(Avaliacao avaliacao);
+	
 }

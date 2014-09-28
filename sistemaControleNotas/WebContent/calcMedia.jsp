@@ -14,18 +14,18 @@
 <body>
 	<div class="geral">
 		<jsp:include page="cabecalho.html" />
-		<form class="formulario" action="AlunoServlet?parametro=ServicoCalculaMedia" method="post">
+		<form class="formulario" action="AlunoServlet?parametro=ServicoCalculoMedia" method="post">
 			
-			<p><input type="radio" name="opSelecionada" value="op1">Calcular a média usando todas as notas</input></p>
+			<p><input type="radio" name="opcaoSelecionada" value="todasNotas">Calcular a média usando todas as notas</input></p>
 
-			<p><input type="radio" name="opSelecionada" value="op2">Calcular a média usando notas maiores</input></p>
+			<p><input type="radio" name="opcaoSelecionada" value="notasMaiores">Calcular a média usando notas maiores</input></p>
 			
 			<p>
 				<label style="margin-left: 15px">Quantdidade de notas maiores que irão compor a média</label>
-				<input type="text"	size="15" name="quantNotasMaiores" />
+				<input type="text"	size="15" name="qtdNotas" />
 			</p>
 			
-			<p><input type="radio" name="opSelecionada" value="op3">Calcular a média avaliações selecionadas</input></p>
+			<p><input type="radio" name="opcaoSelecionada" value="op3">Calcular a média avaliações selecionadas</input></p>
 				<%
 					AvaliacaoDao dao = new AvaliacaoDaoImpl();
 					int op=1;

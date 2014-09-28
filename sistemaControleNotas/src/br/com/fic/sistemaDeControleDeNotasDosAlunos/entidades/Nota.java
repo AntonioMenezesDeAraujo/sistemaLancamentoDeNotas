@@ -16,7 +16,7 @@ public class Nota {
 	@ManyToOne
 	private Aluno aluno;
 	@ManyToOne
-	private Avaliacao notaAluno;
+	private Avaliacao notaAluno = new Avaliacao();
 
 	public Aluno getAluno() {
 		return aluno;

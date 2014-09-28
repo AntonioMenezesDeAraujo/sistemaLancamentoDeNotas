@@ -55,7 +55,7 @@ public class AvaliacaoDaoImpl extends ConexaoBancoDeDados implements AvaliacaoDa
 
 	@Override
 	public List<Avaliacao> pesquisarAvaliacao() {
-		String jpql = "select avaliacao.* from Avaliacao avaliacao";
+		String jpql = "select avaliacao from Avaliacao avaliacao";
 		Query query = entity.createQuery(jpql);
 		List<Avaliacao> avaliacoes = new ArrayList<Avaliacao>();
 		avaliacoes = query.getResultList();
