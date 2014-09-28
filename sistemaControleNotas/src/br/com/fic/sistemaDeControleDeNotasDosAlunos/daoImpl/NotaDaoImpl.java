@@ -1,10 +1,13 @@
 package br.com.fic.sistemaDeControleDeNotasDosAlunos.daoImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.servlet.http.HttpServletRequest;
 
 import br.com.fic.sistemaDeControleDeNotasDosAlunos.dao.AlunoDao;
+import br.com.fic.sistemaDeControleDeNotasDosAlunos.dao.AvaliacaoDao;
 import br.com.fic.sistemaDeControleDeNotasDosAlunos.dao.NotaDao;
 import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Aluno;
 import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Avaliacao;
@@ -79,17 +82,21 @@ public class NotaDaoImpl extends ConexaoBancoDeDados implements NotaDao {
 		Double media = 0.0;
 		AlunoDao dao = new AlunoDaoImpl();
 		int i = 0;
-		for(int h=0;h<notasAlunoOrdenados.length;h++){
-//			notasAlunoOrdenados[h] = 0.0;
-//			notasConsideradas[h] = 0.0;
-//			notasAluno[h] = 0.0;
+
+		for (int h = 0; h < notasAlunoOrdenados.length; h++) {
+			notasAluno[h] = 0.0;
+			notasAlunoOrdenados[h] = 0.0;
 		}
-		
+
+		for (int h = 0; h < qtd; h++) {
+			notasConsideradas[h] = 0.0;
+		}
+
 		for (Nota nota : aluno.getNotas()) {
 			notasAluno[i] = nota.getNota();
 			i++;
 		}
-		
+
 		notasAlunoOrdenados = ordenaNotasOrdemDecrescente(notasAluno);
 		notasConsideradas = selecionarNotasDaMedia(notasAlunoOrdenados, qtd);
 		media = calculaMedia(notasConsideradas);
@@ -99,11 +106,14 @@ public class NotaDaoImpl extends ConexaoBancoDeDados implements NotaDao {
 	}
 
 	private Double calculaMedia(Double[] notasConsideradas) {
-		Double media = 0.0;
+		Double media = 0.0, resultado;
+		int cont = 0;
 		for (int i = 0; i < notasConsideradas.length; i++) {
 			media += notasConsideradas[i];
+			cont++;
 		}
-		return media;
+		resultado = media / cont;
+		return resultado;
 	}
 
 	private Double[] selecionarNotasDaMedia(Double[] notasAlunoOrdenados,
@@ -117,20 +127,63 @@ public class NotaDaoImpl extends ConexaoBancoDeDados implements NotaDao {
 
 	private Double[] ordenaNotasOrdemDecrescente(Double[] notasConsideradas) {
 		for (int i = 0; i < notasConsideradas.length; i++) {
-			for (int j = i + 1; i < notasConsideradas.length; j++) {
-				if(notasConsideradas[j] == null){
-					return notasConsideradas;
-				}
+			for (int j = i + 1; j < notasConsideradas.length - 1; j++) {
+				// if(notasConsideradas[j] == null){
+				// return notasConsideradas;
+				// }
 				if (notasConsideradas[i] < notasConsideradas[j]) {
 					Double aux = notasConsideradas[j];
 					notasConsideradas[i] = notasConsideradas[j];
 					notasConsideradas[j] = aux;
-					
+
 				}
 
 			}
 		}
 		return notasConsideradas;
+	}
+
+	@Override
+	public void calculaMediaDasAvaliacaoesSelecionadas(HttpServletRequest req) {
+		String codigo;
+		Double media;
+		AvaliacaoDao avDao = new AvaliacaoDaoImpl();
+		List<String> codigosSelecionados = new ArrayList<String>();
+		List<Avaliacao> avaliacoes = avDao.pesquisarAvaliacao();
+		for (Avaliacao avaliacao : avaliacoes) {
+			codigo = req.getParameter(avaliacao.getCodigo());
+			if (avaliacao.getCodigo().equals(codigo)) {
+				codigosSelecionados.add(codigo);
+			}
+		}
+		calculaMediaComAvsSelecionadas(codigosSelecionados);
+		
+	}
+
+	private Double calculaMediaComAvsSelecionadas(List<String> codigosSelecionados) {
+		AlunoDao dao = new AlunoDaoImpl();
+		Double resultadoSoma = 0.0;
+		List<Aluno> alunos = dao.retornarTodosOsAluno();
+		for(Aluno aluno:alunos){
+			resultadoSoma = calculaMediaNotasSelecionadas(aluno,codigosSelecionados);
+			aluno.setMedia(resultadoSoma);
+			new AlunoDaoImpl().alterarDadosDoAluno(aluno);
+		}
+		return resultadoSoma;
+	}
+
+	private Double calculaMediaNotasSelecionadas(Aluno aluno, List<String> codigosSelecionados) {
+		Double soma = 0.0;
+		int cont = 0;
+		for(Nota nota:aluno.getNotas()){
+			for(String codigo:codigosSelecionados){
+				if(nota.getNotaAluno().getCodigo().equals(codigo)){
+					soma +=nota.getNota();
+					cont++;
+				}
+			}
+		}
+		return soma/cont;
 	}
 
 }

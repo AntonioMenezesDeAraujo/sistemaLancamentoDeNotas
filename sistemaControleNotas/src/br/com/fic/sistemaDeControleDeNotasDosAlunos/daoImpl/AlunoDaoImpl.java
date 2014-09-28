@@ -49,8 +49,17 @@ public class AlunoDaoImpl extends ConexaoBancoDeDados implements AlunoDao {
 
 	@Override
 	public void alterarDadosDoAluno(Aluno aluno) {
+		try{
+//		entity.getTransaction().begin();
 		entity.merge(aluno);
 		entity.getTransaction().commit();
+		}catch(Exception e){
+			try {
+				throw new Exception(e);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}
 	}
 
 	@Override

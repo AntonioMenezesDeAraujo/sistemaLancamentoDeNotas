@@ -25,14 +25,14 @@
 				<input type="text"	size="15" name="qtdNotas" />
 			</p>
 			
-			<p><input type="radio" name="opcaoSelecionada" value="op3">Calcular a média avaliações selecionadas</input></p>
+			<p><input type="radio" name="opcaoSelecionada" value="avsSelecionadas">Calcular a média avaliações selecionadas</input></p>
 				<%
 					AvaliacaoDao dao = new AvaliacaoDaoImpl();
 					int op=1;
 					List<Avaliacao> avaliacoes = dao.pesquisarAvaliacao(); 
 					for(Avaliacao av : avaliacoes){
 				%>
-				<p><input type="checkbox" name="${op}" style="margin-left: 50px"><%=av.getDescricao() %></input></p>
+				<p><input type="checkbox" name="<%=av.getCodigo()%>" value = "<%=av.getCodigo() %>" style="margin-left: 50px"><%=av.getDescricao() %></input></p>
 				<%
 					op = op+1;
 					} %>
