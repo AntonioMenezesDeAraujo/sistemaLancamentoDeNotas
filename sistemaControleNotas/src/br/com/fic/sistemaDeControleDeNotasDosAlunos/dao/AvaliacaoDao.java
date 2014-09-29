@@ -8,7 +8,7 @@ public interface AvaliacaoDao {
 
 	void cadastroDeAvaliacao(Avaliacao avaliacao) throws Exception;
 
-	void alterarDadosDaAvaliacao(Avaliacao avaliacao);
+	void alterarDadosDaAvaliacao(Avaliacao avaliacao) throws Exception;
 
 	List<Avaliacao> pesquisarAvaliacao();
 	

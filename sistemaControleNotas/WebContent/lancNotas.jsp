@@ -9,9 +9,15 @@
 <body>
 	<div id="id" class="geral">
 		<jsp:include page="cabecalho.html" />
-		
+		<%
+		   String erro = request.getParameter("erro");
+	 	%>
 		<form class="formulario" action="AlunoServlet?parametro=ServicoPesquisarAluno" name="formulario" method="post">
-			
+			<%
+				if(erro != null && !erro.isEmpty()){
+					out.print("<div class=\"error\">" + erro + "</div>");
+				}
+	 		%>
 			<p><label>Digite a matrícula:</label> <input type="text" size="20" name="mat" /></p>
 			
 			<p> 

@@ -12,9 +12,14 @@
 <body>
 	<div id="id" class="geral">
 		<jsp:include page="cabecalho.html" />
-		
+		<%
+		   String erro = request.getParameter("erro");
+	 	%>
 		<form class="formulario" action="AlunoServlet?parametro=ServicoLancarNota" name="formulario" method="post">
 			<%
+				if(erro != null && !erro.isEmpty()){
+					out.print("<div class=\"error\">" + erro + "</div>");
+				}
 				Aluno aluno = (Aluno)request.getAttribute("alunoSelecionado");
 				List<Avaliacao> avaliacoes = (List<Avaliacao>)request.getAttribute("avaliacoesSelecionada");
 	 		%>
@@ -26,8 +31,8 @@
 					<option><%= avaliacao.getDescricao() %></option>
 				<%} %>
 			</select>
-			<p><label>Nome:</label> <input type="text" size="20" name="nome" value="<%= aluno.getNome() %>" /></p>
-			<p><label>Matrícula:</label> <input type="text" size="20" name="mat" value="<%= aluno.getMatricula() %>" /></p>
+			<p><label>Nome:</label> <input type="text" size="20" name="nome" value="<%= aluno.getNome() %>" readonly="readonly" /></p>
+			<p><label>Matrícula:</label> <input type="text" size="20" name="mat" value="<%= aluno.getMatricula() %>" readonly="readonly" /></p>
 			<p><label>Nota:</label> <input type="text" size="20" name="nota" /></p>
 			<p> 
 				<input type="submit" value="Lançar" /> 

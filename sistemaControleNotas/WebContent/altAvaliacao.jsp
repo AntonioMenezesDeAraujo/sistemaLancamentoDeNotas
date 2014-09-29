@@ -12,11 +12,16 @@
 <div class="geral">
 	 <jsp:include page="cabecalho.html" />
 	 <%
+	   String erro = request.getParameter("erro");
 	   String codigo = request.getParameter("cod");
 	   String descricao = request.getParameter("desc");
 	 %>
      	<form class="formulario" action="AvaliacaoServlet?parametro=ServicoAlterarAvaliacao" method="post">
-			
+			<%
+				if(erro != null && !erro.isEmpty()){
+					out.print("<div class=\"error\">" + erro + "</div>");
+				}
+	 		%>
 			<p>
 				<label>Descrição:</label>
 				<input type="text" size="20" name="descricaoAlterado" value="<%=  descricao%>" />

@@ -38,7 +38,7 @@
 			
 			<p> 
 				<input type="submit" value="Cadastrar" /> 
-				<input type="reset" value="Limpar" />
+				<a href="index.jsp" class="button">Voltar</a>
 			</p>
 		</form>
 	</div>

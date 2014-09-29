@@ -34,7 +34,12 @@ public class ServicoExcluirAvaliacao implements Servico{
 	}
 
 	@Override
-	public String getNomePagina() {
+	public String getNomePaginaSucesso() {
+		return "conAvaliacao.jsp";
+	}
+
+	@Override
+	public String getNomePaginaErro() {
 		return "conAvaliacao.jsp";
 	}
 

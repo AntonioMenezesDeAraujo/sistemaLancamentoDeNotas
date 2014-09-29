@@ -14,9 +14,11 @@ public interface AlunoDao {
 
 	List<Aluno> pesquisarAlunoPorNome(String nome);
 
-	List<Aluno> pesquisarAlunoPorMatricula(String matricula);
+	List<Aluno> pesquisarAlunoPorMatricula(String matricula) throws Exception;
 
 	void excluirAluno(String matriculaOuNome);
 	
 	List<Double> pesquisarTodasNotasDoAluno(Aluno aluno);
+
+	List<Aluno> pesquisarAluno(String matricula) throws Exception;
 }

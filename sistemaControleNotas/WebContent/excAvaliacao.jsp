@@ -20,15 +20,13 @@
 			<p>Deseja realmente excluir o registro abaixo?</p>
 			<p>
 				<label>Código:</label>
-				<input type="text" size="20" name="codigo" value = "<%= codigo%>" />
+				<input type="text" size="20" name="codigo" value = "<%= codigo%>" readonly="readonly" />
 			</p>
 		
 			<p>
 				<label>Descricão:</label>
-				<input type="text" size="20" name="descricao" value = "<%= descricao %>" /> 
-			</p>
-			
-			
+				<input type="text" size="20" name="descricao" value = "<%= descricao %>" readonly="readonly" /> 
+			</p>			
 			<p>
 				<input  type="submit" value="Excluir"></input>
 				<a href="conAvaliacao.jsp" class="button">Voltar</a>

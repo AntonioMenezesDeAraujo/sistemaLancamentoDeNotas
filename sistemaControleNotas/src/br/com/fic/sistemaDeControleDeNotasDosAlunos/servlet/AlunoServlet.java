@@ -33,22 +33,24 @@ public class AlunoServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String parametro = request.getParameter("parametro");
 		String nomeDaClasse = "br.com.fic.sistemaDeControleDeNotasDosAlunos.servico." + parametro;
-		String pagina = "";
+		String paginaSucesso = "";
+		String paginaErro = "";
 		if(nomeDaClasse != null){
 			try {
 				Class<?> classe = Class.forName(nomeDaClasse);
 				Servico servico = (Servico) classe.newInstance();
 
 				// Recebe o String após a execução da lógica
-				pagina = servico.getNomePagina();
+				paginaSucesso = servico.getNomePaginaSucesso();
+				paginaErro = servico.getNomePaginaErro();
 				servico.executaLogica(request, response);
-				pagina = pagina + "?message=Cadastro realizado com sucesso!";
-				RequestDispatcher dispatcher = request.getRequestDispatcher(pagina);  
+				paginaSucesso = paginaSucesso + "?message=Cadastro realizado com sucesso!";
+				RequestDispatcher dispatcher = request.getRequestDispatcher(paginaSucesso);  
 				dispatcher.forward(request, response);
 
 			} catch (Exception e) {
-				pagina = pagina + "?erro=" + e.getCause().getCause().getMessage();
-				RequestDispatcher dispatcher = request.getRequestDispatcher(pagina);  
+				paginaErro = paginaErro + "?erro=" + e.getCause().getCause().getMessage();
+				RequestDispatcher dispatcher = request.getRequestDispatcher(paginaErro);  
 				dispatcher.forward(request, response);
 			}
 		}

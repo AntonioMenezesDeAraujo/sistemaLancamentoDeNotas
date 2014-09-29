@@ -7,7 +7,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Consultar Avaliacao</title>
+<title>Consultar Avaliação</title>
 <link rel="stylesheet" type="text/css" href="<c:url value="estilo.css" />" />
 </head>
 <body>
@@ -15,7 +15,7 @@
 		<jsp:include page="cabecalho.html" />
 		<form class="formulario" action="AlunoServlet?parametro=ServicoConsultaAvaliacao" method="post">
 			<p>
-				<label>Digite codigo ou descricao da Avaliacao:</label> 
+				<label>Digite o código ou descrição da avaliação:</label> 
 				<input type="text"	size="50" name="buscar" /> 
 				<input type="submit" value="Pesquisar"/>
 			</p>
@@ -24,8 +24,8 @@
 			<table>
 				<tr>
 					<td></td>
-					<td>Codigo</td>
-					<td>Descricao</td>
+					<td>Código</td>
+					<td>Descrição</td>
 
 				</tr>
 				<%
@@ -34,7 +34,7 @@
 				AvaliacaoDao dao = new AvaliacaoDaoImpl();
 				List<Avaliacao> avaliacoes = dao.pesquisarAvaliacao();
 				for(Avaliacao av: avaliacoes){
-					if(av.getCodigo().equals(parametro) || av.getDescricao().equals(parametro)){
+					if(av.getCodigo().equals(parametro) || av.getDescricao().toUpperCase().contains(parametro.toUpperCase())){
 				%>
 					<tr>
 						<td>

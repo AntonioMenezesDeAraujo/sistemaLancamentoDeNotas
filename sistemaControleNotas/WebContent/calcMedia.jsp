@@ -14,8 +14,15 @@
 <body>
 	<div class="geral">
 		<jsp:include page="cabecalho.html" />
+		<%
+			String erro = request.getParameter("erro");
+	 	%>
 		<form class="formulario" action="AlunoServlet?parametro=ServicoCalculoMedia" method="post">
-			
+			<%
+				if(erro != null && !erro.isEmpty()){
+					out.print("<div class=\"error\">" + erro + "</div>");
+				}
+	 		%>
 			<p><input type="radio" name="opcaoSelecionada" value="todasNotas">Calcular a média usando todas as notas</input></p>
 
 			<p><input type="radio" name="opcaoSelecionada" value="notasMaiores">Calcular a média usando notas maiores</input></p>

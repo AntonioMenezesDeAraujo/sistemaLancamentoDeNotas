@@ -7,5 +7,7 @@ public interface Servico {
 	
 	void executaLogica(HttpServletRequest req, HttpServletResponse res) throws Exception;
 	
-	String getNomePagina();
+	String getNomePaginaSucesso();
+	
+	String getNomePaginaErro();
 }

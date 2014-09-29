@@ -19,7 +19,12 @@ public class ServicoExcluirAluno implements Servico{
 	}
 
 	@Override
-	public String getNomePagina() {
+	public String getNomePaginaSucesso() {
+		return "conAluno.jsp";
+	}
+
+	@Override
+	public String getNomePaginaErro() {
 		return "conAluno.jsp";
 	}
 

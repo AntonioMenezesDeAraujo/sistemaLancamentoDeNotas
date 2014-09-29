@@ -87,11 +87,31 @@ public class AlunoDaoImpl extends ConexaoBancoDeDados implements AlunoDao {
 	}
 
 	@Override
-	public List<Aluno> pesquisarAlunoPorMatricula(String matricula) {
-		List<Aluno> alunos = new ArrayList<Aluno>();
-		Query query = entity.createQuery("select aluno from Aluno aluno where aluno.matricula = '" + matricula + "'");
-		alunos = query.getResultList();
-		return alunos;
+	public List<Aluno> pesquisarAlunoPorMatricula(String matricula) throws Exception {
+		try {
+			List<Aluno> alunos = new ArrayList<Aluno>();
+			Query query = entity.createQuery("select aluno from Aluno aluno where aluno.matricula = '" + matricula + "'");
+			alunos = query.getResultList();
+			return alunos;			
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
+	
+	@Override
+	public List<Aluno> pesquisarAluno(String matricula) throws Exception {
+		try {
+			if(matricula == null || matricula.isEmpty()){
+				throw new Exception("Informe a matrícula!");
+			}
+			List<Aluno> alunos = pesquisarAlunoPorMatricula(matricula);
+			if(alunos == null || alunos.isEmpty()){
+				throw new Exception("Matrícula inexistente!");
+			}
+			return alunos;			
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
 	}
 
 	@Override

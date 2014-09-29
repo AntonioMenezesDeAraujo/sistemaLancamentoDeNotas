@@ -13,22 +13,29 @@ public class ServicoPesquisarAluno implements Servico {
 
 	@Override
 	public void executaLogica(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		AlunoDao dao = new AlunoDaoImpl();
-		AvaliacaoDao daoAv = new AvaliacaoDaoImpl();
-		String matricula = req.getParameter("mat");
+		try {
+			AlunoDao dao = new AlunoDaoImpl();
+			AvaliacaoDao daoAv = new AvaliacaoDaoImpl();
+			String matricula = req.getParameter("mat");
 
-		Aluno aluno = dao.pesquisarAlunoPorMatricula(matricula).get(0);
-		
-		req.setAttribute("alunoSelecionado", aluno);
-		
-		req.setAttribute("avaliacoesSelecionada",daoAv.pesquisarAvaliacao());
-		
-		
+			Aluno aluno = dao.pesquisarAluno(matricula).get(0);
+			
+			req.setAttribute("alunoSelecionado", aluno);
+			
+			req.setAttribute("avaliacoesSelecionada",daoAv.pesquisarAvaliacao());
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
 	}
 
 	@Override
-	public String getNomePagina() {
+	public String getNomePaginaSucesso() {
 		return "lancarNota.jsp";
+	}
+
+	@Override
+	public String getNomePaginaErro() {
+		return "lancNotas.jsp";
 	}
 
 }

@@ -33,7 +33,7 @@ public class AvaliacaoServlet extends HttpServlet {
 				Servico servico = (Servico) classe.newInstance();
 
 				// Recebe o String após a execução da lógica
-				pagina = servico.getNomePagina();
+				pagina = servico.getNomePaginaSucesso();
 				servico.executaLogica(request, response);
 				pagina = pagina + "?message=Cadastro realizado com sucesso!";
 				RequestDispatcher dispatcher = request.getRequestDispatcher(pagina);  

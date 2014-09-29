@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
 
 import br.com.fic.sistemaDeControleDeNotasDosAlunos.dao.AlunoDao;
@@ -23,13 +24,59 @@ public class NotaDaoImpl extends ConexaoBancoDeDados implements NotaDao {
 	}
 
 	@Override
-	public void lancarNota(Aluno aluno, Avaliacao avaliacao, Double nota) {
-		Nota notaPersist = new Nota();
-		notaPersist.setAluno(aluno);
-		notaPersist.setNota(nota);
-		notaPersist.setNotaAluno(avaliacao);
-		entity.persist(notaPersist);
-		entity.getTransaction().commit();
+	public void lancarNota(Aluno aluno, Avaliacao avaliacao, Double nota) throws Exception {
+		try {
+			Nota notaPersist = new Nota();
+			notaPersist.setAluno(aluno);
+			notaPersist.setNota(nota);
+			notaPersist.setNotaAluno(avaliacao);
+			validaLancarNota(notaPersist);
+			List<Nota> notas = pesquisarNotas();
+			for(Nota notaObj : notas){
+				if(notaObj.getAluno().getMatricula().equals(aluno.getMatricula()) &&
+				   notaObj.getNotaAluno().getCodigo().equals(avaliacao.getCodigo())){
+					notaPersist.setId(notaObj.getId());
+					break;
+				}
+			}
+			if(notaPersist.getId() != null){
+				entity.merge(notaPersist);
+			}else{			
+				entity.persist(notaPersist);
+			}
+			entity.getTransaction().commit();
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
+	
+	private void validaLancarNota(Nota nota) throws Exception{
+		try {
+			if(nota.getNotaAluno() == null){
+				throw new Exception("Avaliação deve ser preenchida!");
+			}
+			if(nota.getNota() == null){
+				throw new Exception("Nota deve ser preenchida!");
+			}
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
+	
+	public List<Nota> pesquisarNotas() {
+		List<Nota> notas = new ArrayList<Nota>();
+		Query query = entity.createQuery("select nota from Nota nota");
+		notas = query.getResultList();
+		return notas;
+	}
+	
+	@Override
+	public List<Nota> pesquisarNota(String matricula, String codigo) {
+		List<Nota> notas = new ArrayList<Nota>();
+		Query query = entity.createNativeQuery("select nota.id, nota.aluno_matricula, nota.notaAluno_codigo, nota.nota from Nota nota where nota.aluno_matricula='" + matricula +
+										 		"' and nota.notaAluno_codigo='" + codigo + "'");
+		notas = query.getResultList();
+		return notas;
 	}
 
 	@Override
@@ -67,12 +114,20 @@ public class NotaDaoImpl extends ConexaoBancoDeDados implements NotaDao {
 
 	@Override
 	public void calculaMediaComNotasMaiores(int qtd) throws Exception {
-		AlunoDao dao = new AlunoDaoImpl();
-		List<Aluno> alunos = dao.retornarTodosOsAluno();
-		for (Aluno aluno : alunos) {
-			calculaMediaDeNotasMaiores(aluno, qtd);
+		try {
+			AlunoDao dao = new AlunoDaoImpl();
+			AvaliacaoDao daoAv = new AvaliacaoDaoImpl();
+			Integer nrAvaliacoes = daoAv.pesquisarAvaliacao().size();
+			if(qtd > nrAvaliacoes){
+				throw new Exception("Quantidade informada é superior ao número de avaliações!");
+			}
+			List<Aluno> alunos = dao.retornarTodosOsAluno();
+			for (Aluno aluno : alunos) {
+				calculaMediaDeNotasMaiores(aluno, qtd);
+			}			
+		} catch (Exception e) {
+			throw new Exception(e);
 		}
-
 	}
 
 	private void calculaMediaDeNotasMaiores(Aluno aluno, int qtd) throws Exception {
@@ -161,19 +216,26 @@ public class NotaDaoImpl extends ConexaoBancoDeDados implements NotaDao {
 	}
 
 	private Double calculaMediaComAvsSelecionadas(List<String> codigosSelecionados) throws Exception {
-		AlunoDao dao = new AlunoDaoImpl();
-		Double resultadoSoma = 0.0;
-		List<Aluno> alunos = dao.retornarTodosOsAluno();
-		for(Aluno aluno:alunos){
-			resultadoSoma = calculaMediaNotasSelecionadas(aluno,codigosSelecionados);
-			aluno.setMedia(resultadoSoma);
-			new AlunoDaoImpl().alterarDadosDoAluno(aluno);
+		try {
+			if(codigosSelecionados == null || codigosSelecionados.isEmpty()){
+				throw new Exception("Selecione pelo menos uma avaliação");
+			}
+			AlunoDao dao = new AlunoDaoImpl();
+			Double resultadoSoma = 0.0;
+			List<Aluno> alunos = dao.retornarTodosOsAluno();
+			for(Aluno aluno:alunos){
+				resultadoSoma = calculaMediaNotasSelecionadas(aluno,codigosSelecionados);
+				aluno.setMedia(resultadoSoma);
+				new AlunoDaoImpl().alterarDadosDoAluno(aluno);
+			}
+			return resultadoSoma;
+		} catch (Exception e) {
+			throw new Exception(e);
 		}
-		return resultadoSoma;
 	}
 
 	private Double calculaMediaNotasSelecionadas(Aluno aluno, List<String> codigosSelecionados) {
-		Double soma = 0.0;
+		Double soma = 0d;
 		int cont = 0;
 		for(Nota nota:aluno.getNotas()){
 			for(String codigo:codigosSelecionados){
@@ -183,7 +245,11 @@ public class NotaDaoImpl extends ConexaoBancoDeDados implements NotaDao {
 				}
 			}
 		}
-		return soma/cont;
+		if(cont > 0){			
+			return soma/cont;
+		}else{
+			return 0d;
+		}
 	}
 
 }

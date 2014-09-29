@@ -18,11 +18,11 @@
 			<p>Deseja realmente excluir o registro abaixo?</p>
 			<p>
 				<label>Matrícula:</label>
-				<input type="text" size="20" name="mat" value = "<%= matricula %>" /> 
+				<input type="text" size="20" name="mat" value = "<%= matricula %>" readonly="readonly" /> 
 			</p>
 			<p>
 				<label>Nome:</label>
-				<input type="text" size="20" name="nome" value = "<%= nome%>" />
+				<input type="text" size="20" name="nome" value = "<%= nome%>" readonly="readonly" />
 			</p>
 			<p>
 				<input  type="submit" value="Excluir"></input>

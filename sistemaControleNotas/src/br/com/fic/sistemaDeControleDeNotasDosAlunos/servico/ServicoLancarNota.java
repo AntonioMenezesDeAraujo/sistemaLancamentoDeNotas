@@ -21,24 +21,34 @@ public class ServicoLancarNota implements Servico {
 		NotaDao notaDao = new NotaDaoImpl();
 		AlunoDao dao = new AlunoDaoImpl();
 		AvaliacaoDao daoAv = new AvaliacaoDaoImpl();
-		Avaliacao avaliacao = new Avaliacao();
+		Avaliacao avaliacao = null;
 
 		Aluno aluno = (dao.pesquisarAlunoPorMatricula((String) req.getParameter("mat")).get(0));
 
 		List<Avaliacao> avaliacoes = daoAv.pesquisarAvaliacao();
 
 		for (Avaliacao av : avaliacoes) {
-			if (av.getDescricao().equals((String) req.getParameter("avaliacao"))) {
+			if (av.getDescricao().equals(req.getParameter("avaliacao"))) {
 				avaliacao = av;
 			}
 		}
 		
-		notaDao.lancarNota(aluno, avaliacao, Double.parseDouble((String) req.getParameter("nota")));
+		Double nota = null;
+		if(req.getParameter("nota") != null && !req.getParameter("nota").isEmpty()){
+			nota = Double.parseDouble(req.getParameter("nota"));
+		}
+		
+		notaDao.lancarNota(aluno, avaliacao, nota);
 
 	}
 
 	@Override
-	public String getNomePagina() {
+	public String getNomePaginaSucesso() {
+		return "lancNotas.jsp";
+	}
+
+	@Override
+	public String getNomePaginaErro() {
 		return "lancNotas.jsp";
 	}
 

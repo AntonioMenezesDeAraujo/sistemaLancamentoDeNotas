@@ -23,7 +23,12 @@ public class ServicoCadastroAvaliacao implements Servico {
 	}
 
 	@Override
-	public String getNomePagina() {
+	public String getNomePaginaSucesso() {
+		return "cadAvaliacao.jsp";
+	}
+
+	@Override
+	public String getNomePaginaErro() {
 		return "cadAvaliacao.jsp";
 	}
 

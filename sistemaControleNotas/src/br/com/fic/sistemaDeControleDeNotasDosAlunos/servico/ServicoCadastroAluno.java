@@ -25,7 +25,12 @@ public class ServicoCadastroAluno implements Servico {
 	}
 
 	@Override
-	public String getNomePagina() {
+	public String getNomePaginaSucesso() {
+		return "cadAluno.jsp";
+	}
+
+	@Override
+	public String getNomePaginaErro() {
 		return "cadAluno.jsp";
 	}
 

@@ -21,7 +21,7 @@ public class AvaliacaoDaoImpl extends ConexaoBancoDeDados implements AvaliacaoDa
 	@Override
 	public void cadastroDeAvaliacao(Avaliacao avaliacao) throws Exception {
 		try {
-			validarAvaliacao(avaliacao);
+			validarCadastroAvaliacao(avaliacao);
 			entity.persist(avaliacao);
 			entity.getTransaction().commit();			
 		} catch (Exception e) {
@@ -29,7 +29,7 @@ public class AvaliacaoDaoImpl extends ConexaoBancoDeDados implements AvaliacaoDa
 		}
 	}
 	
-	private void validarAvaliacao(Avaliacao avaliacao) throws Exception{
+	private void validarCadastroAvaliacao(Avaliacao avaliacao) throws Exception{
 		try {
 			if(avaliacao.getCodigo() == null || avaliacao.getCodigo().isEmpty()){
 				throw new Exception("Código deve ser preenchido!");
@@ -48,9 +48,24 @@ public class AvaliacaoDaoImpl extends ConexaoBancoDeDados implements AvaliacaoDa
 	}
 
 	@Override
-	public void alterarDadosDaAvaliacao(Avaliacao avaliacao) {
-		entity.merge(avaliacao);
-		entity.getTransaction().commit();
+	public void alterarDadosDaAvaliacao(Avaliacao avaliacao) throws Exception {
+		try {			
+			validarAlterarAvaliacao(avaliacao);
+			entity.merge(avaliacao);
+			entity.getTransaction().commit();
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
+	
+	private void validarAlterarAvaliacao(Avaliacao avaliacao) throws Exception{
+		try {
+			if(avaliacao.getDescricao() == null || avaliacao.getDescricao().isEmpty()){
+				throw new Exception("Descrição deve ser preenchido!");
+			}
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
 	}
 
 	@Override
