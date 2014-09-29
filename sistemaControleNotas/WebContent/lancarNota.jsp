@@ -36,7 +36,7 @@
 			<p><label>Nota:</label> <input type="text" size="20" name="nota" /></p>
 			<p> 
 				<input type="submit" value="Lançar" /> 
-				<a href="index.jsp" class="button">Voltar</a>
+				<a href="lancNotas.jsp" class="button">Voltar</a>
 			</p>
 		</form>
 	</div>
