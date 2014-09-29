@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Lançamento de notas</title>
+<title>Lançamento de Notas</title>
 <link rel="stylesheet" type="text/css" href="<c:url value="estilo.css" />"/>
 </head>
 <body>
@@ -16,7 +16,7 @@
 			
 			<p> 
 				<input type="submit" value="Pesquisar" /> 
-				<input type="reset" value="Cancelar" />
+				<a href="index.jsp" class="button">Voltar</a>
 			</p>
 		</form>
 	</div>

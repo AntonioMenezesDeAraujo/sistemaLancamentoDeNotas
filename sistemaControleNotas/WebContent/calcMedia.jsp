@@ -8,7 +8,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Cálculo da média</title>
+<title>Calcular Média</title>
 <link rel="stylesheet" type="text/css" href="<c:url value="estilo.css" />" />
 </head>
 <body>
@@ -21,7 +21,7 @@
 			<p><input type="radio" name="opcaoSelecionada" value="notasMaiores">Calcular a média usando notas maiores</input></p>
 			
 			<p>
-				<label style="margin-left: 15px">Quantdidade de notas maiores que irão compor a média</label>
+				<label style="margin-left: 15px">Quantidade de notas maiores que irão compor a média</label>
 				<input type="text"	size="15" name="qtdNotas" />
 			</p>
 			
@@ -35,9 +35,8 @@
 				<p><input type="checkbox" name="<%=av.getCodigo()%>" value = "<%=av.getCodigo() %>" style="margin-left: 50px"><%=av.getDescricao() %></input></p>
 				<%
 					op = op+1;
-					} %>
-				
-				
+					} 
+				%>
 			<p>
 				<input type="submit" value="Calcular"/>
 				<a href="index.jsp" class="button">Voltar</a>
