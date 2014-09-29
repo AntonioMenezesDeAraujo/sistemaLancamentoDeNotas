@@ -24,7 +24,7 @@
 			
 			<p>
 				<input  type="submit" value="Alterar"></input>
-				<input  type="reset" value="Limpar"></input>
+				<a href="conAvaliacao.jsp" class="button">Voltar</a>
 			</p>
 			
 			<input  type="hidden" name="codigo" value="<%= codigo%>"/>

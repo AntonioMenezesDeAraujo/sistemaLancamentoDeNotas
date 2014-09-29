@@ -15,19 +15,18 @@
 	  		String matricula = request.getParameter("matricula");
 	   %>
      	<form class="formulario" action="AlunoServlet?parametro=ServicoExcluirAluno" method="post">
-			<p>
-				<label>Nome:</label>
-				<input type="text" size="20" name="nome" value = "<%= nome%>" />
-			</p>
-			
+			<p>Deseja realmente excluir o registro abaixo?</p>
 			<p>
 				<label>Matrícula:</label>
 				<input type="text" size="20" name="mat" value = "<%= matricula %>" /> 
 			</p>
-			
+			<p>
+				<label>Nome:</label>
+				<input type="text" size="20" name="nome" value = "<%= nome%>" />
+			</p>
 			<p>
 				<input  type="submit" value="Excluir"></input>
-				<input  type="reset" value="Limpar"></input>
+				<a href="conAluno.jsp" class="button">Voltar</a>
 			</p>
 		</form>
 	</div>

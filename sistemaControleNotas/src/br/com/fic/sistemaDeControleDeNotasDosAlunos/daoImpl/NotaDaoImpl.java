@@ -33,7 +33,7 @@ public class NotaDaoImpl extends ConexaoBancoDeDados implements NotaDao {
 	}
 
 	@Override
-	public void calculaMediaComTodasNotas() {
+	public void calculaMediaComTodasNotas() throws Exception {
 		Double media = 0.0;
 		int cont = 0;
 		AlunoDao alDao = new AlunoDaoImpl();
@@ -66,7 +66,7 @@ public class NotaDaoImpl extends ConexaoBancoDeDados implements NotaDao {
 	}
 
 	@Override
-	public void calculaMediaComNotasMaiores(int qtd) {
+	public void calculaMediaComNotasMaiores(int qtd) throws Exception {
 		AlunoDao dao = new AlunoDaoImpl();
 		List<Aluno> alunos = dao.retornarTodosOsAluno();
 		for (Aluno aluno : alunos) {
@@ -75,7 +75,7 @@ public class NotaDaoImpl extends ConexaoBancoDeDados implements NotaDao {
 
 	}
 
-	private void calculaMediaDeNotasMaiores(Aluno aluno, int qtd) {
+	private void calculaMediaDeNotasMaiores(Aluno aluno, int qtd) throws Exception {
 		Double notasAluno[] = new Double[10];
 		Double notasAlunoOrdenados[] = new Double[10];
 		Double notasConsideradas[] = new Double[qtd];
@@ -144,7 +144,7 @@ public class NotaDaoImpl extends ConexaoBancoDeDados implements NotaDao {
 	}
 
 	@Override
-	public void calculaMediaDasAvaliacaoesSelecionadas(HttpServletRequest req) {
+	public void calculaMediaDasAvaliacaoesSelecionadas(HttpServletRequest req) throws Exception {
 		String codigo;
 		Double media;
 		AvaliacaoDao avDao = new AvaliacaoDaoImpl();
@@ -160,7 +160,7 @@ public class NotaDaoImpl extends ConexaoBancoDeDados implements NotaDao {
 		
 	}
 
-	private Double calculaMediaComAvsSelecionadas(List<String> codigosSelecionados) {
+	private Double calculaMediaComAvsSelecionadas(List<String> codigosSelecionados) throws Exception {
 		AlunoDao dao = new AlunoDaoImpl();
 		Double resultadoSoma = 0.0;
 		List<Aluno> alunos = dao.retornarTodosOsAluno();

@@ -8,7 +8,7 @@ public interface AlunoDao {
 
 	void salvarAluno(Aluno aluno) throws Exception;
 
-	void alterarDadosDoAluno(Aluno aluno);
+	void alterarDadosDoAluno(Aluno aluno) throws Exception;
 
 	List<Aluno> retornarTodosOsAluno();
 

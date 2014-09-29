@@ -9,9 +9,9 @@ public interface NotaDao {
 
 	void lancarNota(Aluno aluno, Avaliacao avaliacao, Double nota);
 	
-	void calculaMediaComTodasNotas();
+	void calculaMediaComTodasNotas() throws Exception;
 
-	void calculaMediaComNotasMaiores(int qtdd);
+	void calculaMediaComNotasMaiores(int qtdd) throws Exception;
 
-	void calculaMediaDasAvaliacaoesSelecionadas(HttpServletRequest req);
+	void calculaMediaDasAvaliacaoesSelecionadas(HttpServletRequest req) throws Exception;
 }

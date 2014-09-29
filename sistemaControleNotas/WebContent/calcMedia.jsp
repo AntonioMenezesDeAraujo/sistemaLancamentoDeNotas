@@ -32,13 +32,16 @@
 					List<Avaliacao> avaliacoes = dao.pesquisarAvaliacao(); 
 					for(Avaliacao av : avaliacoes){
 				%>
-				<p><input type="checkbox" name="<%=av.getCodigo()%>" value = "<%=av.getCodigo()%>" style="margin-left: 50px"><%=av.getDescricao() %></input></p>
+				<p><input type="checkbox" name="<%=av.getCodigo()%>" value = "<%=av.getCodigo() %>" style="margin-left: 50px"><%=av.getDescricao() %></input></p>
 				<%
 					op = op+1;
 					} %>
 				
 				
-				<p><input type="submit" value="Calcular a Média" align="center"/></p>
+			<p>
+				<input type="submit" value="Calcular"/>
+				<a href="index.jsp" class="button">Voltar</a>
+			</p>
          </form>
 	</div>
 </body>

@@ -12,6 +12,7 @@ import br.com.fic.sistemaDeControleDeNotasDosAlunos.entidades.Aluno;
 public class AlunoDaoImpl extends ConexaoBancoDeDados implements AlunoDao {
 
 	private static EntityManager entity;
+	
 	public AlunoDaoImpl() {
 		entity = conexao();
 		entity.getTransaction().begin();
@@ -31,9 +32,6 @@ public class AlunoDaoImpl extends ConexaoBancoDeDados implements AlunoDao {
 	
 	private void validaCadastroAluno(Aluno aluno) throws Exception{
 		try {
-			if(aluno.getNome() == null || aluno.getNome().isEmpty()){
-				throw new Exception("Nome deve ser preenchido!");
-			}
 			if(aluno.getMatricula() == null || aluno.getMatricula().isEmpty()){
 				throw new Exception("Matrícula deve ser preenchida!");
 			}else{
@@ -42,23 +40,33 @@ public class AlunoDaoImpl extends ConexaoBancoDeDados implements AlunoDao {
 					throw new Exception("Matrícula já existe!");
 				}
 			}
+			if(aluno.getNome() == null || aluno.getNome().isEmpty()){
+				throw new Exception("Nome deve ser preenchido!");
+			}
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
+	
+	private void validaAlteracaoAluno(Aluno aluno) throws Exception{
+		try {
+			if(aluno.getNome() == null || aluno.getNome().isEmpty()){
+				throw new Exception("Nome deve ser preenchido!");
+			}
 		} catch (Exception e) {
 			throw new Exception(e);
 		}
 	}
 
 	@Override
-	public void alterarDadosDoAluno(Aluno aluno) {
-		try{
-//		entity.getTransaction().begin();
-		entity.merge(aluno);
-		entity.getTransaction().commit();
-		}catch(Exception e){
-			try {
-				throw new Exception(e);
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
+
+	public void alterarDadosDoAluno(Aluno aluno) throws Exception {
+		try {
+			validaAlteracaoAluno(aluno);
+			entity.merge(aluno);			
+			entity.getTransaction().commit();
+		} catch (Exception e) {
+			throw new Exception(e);
 		}
 	}
 

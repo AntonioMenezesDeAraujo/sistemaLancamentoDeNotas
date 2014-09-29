@@ -12,10 +12,16 @@
 <div class="geral">
 	 <jsp:include page="cabecalho.html" />
 	 <%
+		String erro = request.getParameter("erro");
 	 	String matricula = request.getParameter("matricula");
 	 	String nome = request.getParameter("nome");
 	 %>
      	<form class="formulario" action="AlunoServlet?parametro=ServicoAlterarAluno" method="post">
+			<%
+				if(erro != null && !erro.isEmpty()){
+					out.print("<div class=\"error\">" + erro + "</div>");
+				}
+	 		%>
 			<p>
 				<label>Nome:</label>
 				<input type="text" size="20" name="nomeAlterado" value="<%= nome %>"/>
@@ -23,7 +29,7 @@
 						
 			<p>
 				<input  type="submit" value="Alterar"></input>
-				<input  type="reset" value="Limpar"></input>
+				<a href="conAluno.jsp" class="button">Voltar</a>
 			</p>
 			
 			<input  type="hidden" name="matriculaOriginal" value="<%= matricula %>"/>

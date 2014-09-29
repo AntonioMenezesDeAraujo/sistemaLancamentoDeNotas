@@ -29,12 +29,12 @@
 				nome = nome != null ? nome : "";
 				matricula = matricula != null ? matricula : "";
 	 		%>
-			<p><label>Nome:</label> <input type="text" size="20" name="nome" value="<%= nome %>" /></p>
 			<p><label>Matrícula:</label> <input type="text" size="20" name="mat" value="<%= matricula %>" /></p>
+			<p><label>Nome:</label> <input type="text" size="20" name="nome" value="<%= nome %>" /></p>
 			
 			<p> 
 				<input type="submit" value="Cadastrar" /> 
-				<input type="reset" value="Limpar" />
+				<a href="index.jsp" class="button">Voltar</a>
 			</p>
 		</form>
 	</div>

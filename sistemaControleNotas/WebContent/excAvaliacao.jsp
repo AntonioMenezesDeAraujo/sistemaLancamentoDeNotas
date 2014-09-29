@@ -18,6 +18,7 @@
 	   %>
 	   
      	<form class="formulario" action="AvaliacaoServlet?parametro=ServicoExcluirAvaliacao" method="post">
+			<p>Deseja realmente excluir o registro abaixo?</p>
 			<p>
 				<label>Código:</label>
 				<input type="text" size="20" name="codigo" value = "<%= codigo%>" />
@@ -35,7 +36,7 @@
 			
 			<p>
 				<input  type="submit" value="Excluir"></input>
-				<input  type="reset" value="Limpar"></input>
+				<a href="conAvaliacao.jsp" class="button">Voltar</a>
 			</p>
 			
 		</form>
