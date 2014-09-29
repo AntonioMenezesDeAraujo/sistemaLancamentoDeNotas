@@ -91,8 +91,16 @@ public class AlunoDaoImpl extends ConexaoBancoDeDados implements AlunoDao {
 		List<Aluno> alunos = retornarTodosOsAluno();
 		for (Aluno aluno : alunos) {
 			if (aluno.getNome().equalsIgnoreCase(matriculaOuNome) || aluno.getMatricula().equalsIgnoreCase(matriculaOuNome)) {
-				entity.remove(aluno);
+				Query query1 = entity.createNativeQuery("delete from Nota where aluno_matricula = "+aluno.getMatricula());
+				query1.executeUpdate();
 				entity.getTransaction().commit();
+				entity.getTransaction().begin();
+				Query query = entity.createNativeQuery("delete from Aluno where matricula = "+aluno.getMatricula());
+				query.executeUpdate();
+				entity.getTransaction().commit();
+//				entity.remove(aluno);
+//				entity.getTransaction().commit();
+//				entity.close();
 				return;
 			}
 		}

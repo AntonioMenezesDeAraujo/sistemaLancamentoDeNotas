@@ -22,15 +22,18 @@
 					<td></td>
 					<td>Nome</td>
 					<td>Matrícula</td>
+					<td>Media</td>
 				</tr>
 				<c:forEach var="aluno" items="${lista}">
 					<tr>
 						<td>
 							<a href="<c:url value="altAluno.jsp?matricula=${aluno.matricula}&nome=${aluno.nome}" />"><img src="imagens/editar.png" title="Alterar" /></a>
 							<a href="<c:url value="excAluno.jsp?matricula=${aluno.matricula}&nome=${aluno.nome}" />"><img src="imagens/excluir.png" title="Excluir"/></a> 
+							
 						</td>
 						<td>${aluno.nome}</td>
 						<td>${aluno.matricula}</td>
+						<td>${aluno.media}</td>
 					</tr>
 				</c:forEach>
 			</table>

@@ -21,8 +21,8 @@ public class ServicoCalculoMedia implements Servico {
 			String opcao = req.getParameter("qtdNotas");
 			int qtdNotasMaiores = Integer.parseInt(opcao); 
 			notaDao.calculaMediaComNotasMaiores(qtdNotasMaiores);
-		}else if(opcaoSelecionada.equals("")){
-			notaDao.calculaMediaComNotasMaiores(1);
+		}else if(opcaoSelecionada.equals("avsSelecionadas")){
+			notaDao.calculaMediaDasAvaliacaoesSelecionadas(req);
 		}
 
 	}

@@ -32,7 +32,7 @@
 					List<Avaliacao> avaliacoes = dao.pesquisarAvaliacao(); 
 					for(Avaliacao av : avaliacoes){
 				%>
-				<p><input type="checkbox" name="<%=av.getCodigo()%>" value = "<%=av.getCodigo() %>" style="margin-left: 50px"><%=av.getDescricao() %></input></p>
+				<p><input type="checkbox" name="<%=av.getCodigo()%>" value = "<%=av.getCodigo()%>" style="margin-left: 50px"><%=av.getDescricao() %></input></p>
 				<%
 					op = op+1;
 					} %>
