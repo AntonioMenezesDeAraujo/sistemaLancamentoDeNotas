@@ -82,7 +82,12 @@ public class AvaliacaoDaoImpl extends ConexaoBancoDeDados implements AvaliacaoDa
 
 	@Override
 	public void excluirAvaliacao(Avaliacao avaliacao) {
-		entity.remove(avaliacao);
+		Query query1 = entity.createNativeQuery("delete from Nota where notaAluno_codigo = " + avaliacao.getCodigo());
+		query1.executeUpdate();
+		entity.getTransaction().commit();
+		entity.getTransaction().begin();
+		Query query = entity.createNativeQuery("delete from Avaliacao where codigo = " + avaliacao.getCodigo());
+		query.executeUpdate();
 		entity.getTransaction().commit();
 	}
 	

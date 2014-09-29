@@ -31,7 +31,7 @@ public class ServicoAlterarAvaliacao implements Servico{
 		}
 		
 		if(avaliacao != null){
-			avaliacao.setCodigo(codigoAlterada);
+			avaliacao.setCodigo(codigoOriginal);
 			avaliacao.setDescricao(descricaoAlterado);
 		}
 		

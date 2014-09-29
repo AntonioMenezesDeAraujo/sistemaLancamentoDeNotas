@@ -12,9 +12,8 @@
 	   <jsp:include page="cabecalho.html" />
 	   
 	   <%
-		   String codigo = request.getParameter("codigo");
-		   String descricao = request.getParameter("descricao");
-		   String peso = request.getParameter("peso");
+		   String codigo = request.getParameter("cod");
+		   String descricao = request.getParameter("desc");
 	   %>
 	   
      	<form class="formulario" action="AvaliacaoServlet?parametro=ServicoExcluirAvaliacao" method="post">
@@ -29,10 +28,6 @@
 				<input type="text" size="20" name="descricao" value = "<%= descricao %>" /> 
 			</p>
 			
-			<p>
-				<label>Peso:</label>
-				<input type="text" size="20" name="peso" value = "<%= peso %>" /> 
-			</p>
 			
 			<p>
 				<input  type="submit" value="Excluir"></input>

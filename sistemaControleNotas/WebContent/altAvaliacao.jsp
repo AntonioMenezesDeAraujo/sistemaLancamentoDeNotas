@@ -12,8 +12,8 @@
 <div class="geral">
 	 <jsp:include page="cabecalho.html" />
 	 <%
-		 String codigo = request.getParameter("codigo");
-		 String descricao = request.getParameter("descricao");
+	   String codigo = request.getParameter("cod");
+	   String descricao = request.getParameter("desc");
 	 %>
      	<form class="formulario" action="AvaliacaoServlet?parametro=ServicoAlterarAvaliacao" method="post">
 			
